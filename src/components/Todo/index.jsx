@@ -6,7 +6,7 @@ class Todo extends Component {
         return (
             <div className="list-group-item">
                 <input type="checkbox" value="on" />
-                <span className="Project">{this.props.getProjectById(this.props.project).title}</span>
+                <span className="Project">{this.props.project}</span>
                 <div>
                     <label className="title">{this.props.title}</label>
                     <span className="description">{this.props.description}</span>

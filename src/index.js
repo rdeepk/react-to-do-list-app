@@ -17,7 +17,7 @@ const status = [
         id: 102,
         title: 'Not Started'
     }
-]
+];
 //Math.max.apply(Math,array.map(function(o){return o.y;}))
 const todos = [
     {
@@ -52,7 +52,7 @@ const todos = [
         project:202,
         labels:[5002]
     }
-]
+];
 
 const projects = [
     {
@@ -68,7 +68,7 @@ const projects = [
         title: 'Health'
     }
 
-]
+];
 
 const labels = [
     {
@@ -92,7 +92,7 @@ const labels = [
         title:'fitness'
     }
 
-]
+];
 ReactDOM.render(<App    todos={todos}
                         status={status}
                         projects={projects}
