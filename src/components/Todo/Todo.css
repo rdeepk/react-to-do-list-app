@@ -1,0 +1,4 @@
+.list-group-item span,
+.list-group-item label {
+    padding: 0 10px;
+}
