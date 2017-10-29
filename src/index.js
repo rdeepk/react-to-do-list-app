@@ -18,7 +18,7 @@ const status = [
         title: 'Not Started'
     }
 ];
-//Math.max.apply(Math,array.map(function(o){return o.y;}))
+
 const todos = [
     {
         id: 1001,
@@ -26,7 +26,13 @@ const todos = [
         description:'Want to learn angular',
         status:102,
         project:201,
-        labels:[5004,5001]
+        labels:[
+            {id: 5001, ischecked:true},
+            {id: 5002, ischecked:false},
+            {id: 5003, ischecked:false},
+            {id: 5004, ischecked:false},
+            {id: 5005, ischecked:true}
+        ]
     },
     {
         id: 1002,
@@ -34,7 +40,13 @@ const todos = [
         description:'Needed completion',
         status:'101',
         project:201,
-        labels:[5004, 5001, 5003]
+        labels:[
+            {id: 5001, ischecked:true},
+            {id: 5002, ischecked:false},
+            {id: 5003, ischecked:true},
+            {id: 5004, ischecked:true},
+            {id: 5005, ischecked:false}
+        ]
     },
     {
         id: 1003,
@@ -42,7 +54,13 @@ const todos = [
         description:'For dinner on weekend',
         status:102,
         project:202,
-        labels:[5002]
+        labels:[
+            {id: 5001, ischecked:false},
+            {id: 5002, ischecked:true},
+            {id: 5003, ischecked:false},
+            {id: 5004, ischecked:false},
+            {id: 5005, ischecked:false}
+        ]
     },
     {
         id: 1003,
@@ -50,7 +68,13 @@ const todos = [
         description:'Milk is important',
         status:102,
         project:202,
-        labels:[5002]
+        labels:[
+            {id: 5001, ischecked:false},
+            {id: 5002, ischecked:true},
+            {id: 5003, ischecked:false},
+            {id: 5004, ischecked:false},
+            {id: 5005, ischecked:false}
+        ]
     }
 ];
 

@@ -9,23 +9,17 @@ class AddTodo extends Component {
             addNewButtonDisplay: "block"
         }
     }
-    handleAddNew = () => {
-        this.setState({
-            addNewFormDisplay: "block",
-            addNewButtonDisplay: "none"
-        })
-    }
 
-    handleCancel = () => {
-        this.setState({
-            addNewFormDisplay: "none",
-            addNewButtonDisplay: "block"
-        })
+    toggleDisplay = () => {
+         this.setState({
+            addNewFormDisplay: this.state.addNewFormDisplay === "block" ? "none" : "block",
+            addNewButtonDisplay: this.state.addNewButtonDisplay === "block" ? "none" : "block"
+         })     
     }
 
     handleFormSubmit(e) {
         e.preventDefault();
-        console.log(this.form)
+        this.toggleDisplay();
     
         this.props.addNewTask(this.form)
     }
@@ -76,7 +70,7 @@ class AddTodo extends Component {
                             <select name="label">{labelsJSX}</select>
                         </div>
                         <input type="submit" value="ADD" />
-                        <button type="button" onClick={this.handleCancel}>Cancel</button>
+                        <button type="button" onClick={this.toggleDisplay}>Cancel</button>
                         </form>
                     </div>
                 </div>                        
@@ -84,7 +78,7 @@ class AddTodo extends Component {
             <div>
                 <div className="row">
                     <div className="col-sm-12">
-                    <button style={{ display: this.state.addNewButtonDisplay }} className="btn btn-default" onClick={this.handleAddNew}>Add New Task</button>
+                    <button style={{ display: this.state.addNewButtonDisplay }} className="btn btn-default" onClick={this.toggleDisplay}>Add New Task</button>
                     </div>
                 </div>
             </div>
