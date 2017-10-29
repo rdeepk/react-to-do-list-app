@@ -45,7 +45,6 @@ class App extends Component {
         } 
       }
     })
-    console.log(labels);
     let newTodo = {
       id: this.getNextId(this.state.todos),
       title: todo.title.value,
@@ -90,13 +89,28 @@ class App extends Component {
     this.setState(this.state.todos);
   }
 
+  handleFilterByStatus = (id) => {
+
+  }
+
   render() {
 
     return (
       <div>
-        <button class="pull-right btn btn-default" onClick={()=>{this.clearComplete(this.props.id)}}>Clear Complete</button>
+        <button className="pull-right btn btn-default" onClick={()=>{this.clearComplete(this.props.id)}}>Clear Complete</button>
+        <select className="default-todos" onChange={this.handleFilterByStatus}>
+            <option value="all">all</option>
+            <option value="active">active</option>
+            <option value="complete">complete</option>
+        </select>
         <AddTodo projects={this.state.projects}  status={this.state.status}  labels={this.state.labels} addNewTask={this.addNewTask} />
-        <TodoList projects={this.state.projects} todos={this.state.todos} getTitleById = {this.getTitleById} removeTodos={this.removeTodos} />
+        <TodoList projects={this.state.projects}
+                  todos={this.state.todos}
+                  getTitleById = {this.getTitleById}
+                  removeTodos={this.removeTodos}
+                  status={this.state.status}
+                  updateTask={this.updateTask}
+                  />
         <Projects projects={this.state.projects} />
         <ProjectList  projects={this.state.projects}
                       todos={this.state.todos}

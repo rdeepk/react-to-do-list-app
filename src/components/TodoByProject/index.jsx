@@ -15,10 +15,10 @@ class TodoByProject extends Component {
             editTodoDisplay: this.state.editTodoDisplay === "block" ? "none" : "block"
         })
     }
-
-    handleFormSubmit(e) {
+ handleFormSubmit(e) {
         this.props.updateTask(this.form, this.props.todo.id)
     }
+   
 
     render() {
         let editLabelsJSX = this.props.todo.labels.map((label, i) => {

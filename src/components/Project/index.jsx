@@ -17,11 +17,18 @@ class Project extends Component {
         return (
             <div className="project">
                 <div className="row">
-                    <div className="col-sm-8">
+                    <div className="col-sm-4">
                         <h1>Project: {this.props.title}</h1>
                     </div>
                     <div className="col-sm-4">
                      <button class="pull-right btn btn-default" onClick={()=>{this.clearComplete(this.props.id)}}>Clear Complete</button>
+                     </div>
+                     <div className="col-sm-4">
+                     <select>
+                        <option value="all">all</option>
+                        <option value="active">active</option>
+                        <option value="complete">complete</option>
+                    </select>
                     </div>
                 </div>
                 
