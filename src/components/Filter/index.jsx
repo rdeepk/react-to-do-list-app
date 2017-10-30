@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import TodoList from '../TodoList';
 import ProjectList from '../ProjectList';
 
@@ -11,35 +11,35 @@ class Filter extends Component {
             todosFilter: "default",
             todoListIsHidden: false,
             projectListIsHidden: true,
-            displayClearForDefaultTodos: "block"
+            displayClearForDefaultTodos: "inline-block"
         }
     }
 
 
     filterByStatus = () => {
         let status = {};
-        this.props.todos.map((todo, index)=>{
+        this.props.todos.map((todo, index) => {
             //check if project is already initialized
             let statusExists = typeof status[todo.status] !== 'undefined' && status[todo.status] instanceof Array
             //if not then initialize it
-            status[todo.status] = statusExists ? status[todo.status]: [];
+            status[todo.status] = statusExists ? status[todo.status] : [];
             let task = {};
             for (var key in todo) {
                 task[key] = todo[key];
             }
             status[todo.status].push(task);
-            
+
         })
         return status;
     }
 
     filterTodos = () => {
         let filteredTodos;
-        if(this.state.selectValue === "all") {
+        if (this.state.selectValue === "all") {
             filteredTodos = this.props.todos;
         } else {
-            filteredTodos = this.props.todos.filter((todo, item) =>{
-                if(Number(todo.status) === Number(this.state.selectValue)) {
+            filteredTodos = this.props.todos.filter((todo, item) => {
+                if (Number(todo.status) === Number(this.state.selectValue)) {
                     return true;
                 }
             })
@@ -49,7 +49,7 @@ class Filter extends Component {
             filteredTodos: filteredTodos
         })
     }
-    
+
     handleFilterByStatus = (e) => {
         this.setState({
             selectValue: e.target.value
@@ -59,7 +59,7 @@ class Filter extends Component {
     handleClearComplete = (projectId) => {
         let completeTodos = [];
         this.props.todos.forEach((todo, i) => {
-            if(Number(todo.status) === 101) {
+            if (Number(todo.status) === 101) {
                 completeTodos.push(todo.id);
             }
         })
@@ -76,8 +76,8 @@ class Filter extends Component {
         this.setState({
             projectListIsHidden: this.state.projectListIsHidden ? false : true,
             todoListIsHidden: this.state.todoListIsHidden ? false : true,
-            displayClearForDefaultTodos: this.state.displayClearForDefaultTodos === "none" ? "block" : "none"
-         }) 
+            displayClearForDefaultTodos: this.state.displayClearForDefaultTodos === "none" ? "inline-block" : "none"
+        })
     }
 
     render() {
@@ -87,9 +87,11 @@ class Filter extends Component {
 
         return (
 
-                <div>
-                    <div className="row">
-                        <div className="col-sm-8">
+            <div>
+                <div className="row">
+                    <div className="col-xs-12">
+                        <div className="filters">
+                            <button style={{ display: this.state.displayClearForDefaultTodos }} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button>
                             <select className="todos-by-status" value={this.state.selectValue} onChange={this.handleFilterByStatus}>
                                 <option value="all">All</option>
                                 {selectJSX}
@@ -98,34 +100,31 @@ class Filter extends Component {
                                 <option value="default">Default</option>
                                 <option value="filterByProject">Filter by project</option>
                             </select>
-                            
-                        </div>
-                        <div className="col-sm-4">
-                            <button style={{ display: this.state.displayClearForDefaultTodos }} className="pull-right btn btn-default" onClick={()=>{this.handleClearComplete(this.props.id)}}>Clear Complete</button>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-12">
-                        {!this.state.todoListIsHidden && 
-                        <TodoList projects={this.props.projects}
-                                        todos={this.state.filteredTodos}
-                                        getTitleById = {this.props.getTitleById}
-                                        removeTodos={this.props.removeTodos}
-                                        status={this.props.status}
-                                        updateTask={this.props.updateTask}
-                                        />}
-                        {!this.state.projectListIsHidden &&
-                        <ProjectList projects={this.props.projects}
-                            todos={this.state.filteredTodos}
-                            getTitleById = {this.props.getTitleById}
-                            status={this.props.status}
-                            labels={this.props.labels}
-                            updateTask={this.props.updateTask}
-                            removeTodos={this.props.removeTodos}
-                        />}
                         </div>
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        {!this.state.todoListIsHidden &&
+                            <TodoList projects={this.props.projects}
+                                todos={this.state.filteredTodos}
+                                getTitleById={this.props.getTitleById}
+                                removeTodos={this.props.removeTodos}
+                                status={this.props.status}
+                                updateTask={this.props.updateTask}
+                            />}
+                        {!this.state.projectListIsHidden &&
+                            <ProjectList projects={this.props.projects}
+                                todos={this.state.filteredTodos}
+                                getTitleById={this.props.getTitleById}
+                                status={this.props.status}
+                                labels={this.props.labels}
+                                updateTask={this.props.updateTask}
+                                removeTodos={this.props.removeTodos}
+                            />}
+                    </div>
+                </div>
+            </div>
         )
     }
 }

@@ -42,7 +42,7 @@ class AddTodo extends Component {
                 <section style={{ display: this.state.addNewFormDisplay }}>
                 <div className="row">
                     <div className="col-sm-12">
-                        <h2>Add New Task</h2>
+                        <h3>Add New Task</h3>
                     </div>
                 </div> 	
                 <div className="row">
@@ -50,27 +50,25 @@ class AddTodo extends Component {
                         <form id="contactForm"  ref={(form) => { this.form = form }}
                                                 onSubmit={(e) => { this.handleFormSubmit(e) }}>
                         <div className="form-group">
-                            <label for="name">Task title: <span className="required">*</span></label>
+                            <label for="name">Title:</label>
                             <input type="text" name="title" required="required" className="form-control" />
                         </div>
                         <div className="form-group">
-                            <label for="description">Task description: <span className="required">*</span></label>
+                            <label for="description">Description:</label>
                             <input type="text" name="description" required="required" className="form-control"/>
                         </div>
                         <div className="form-group">
-                            <label for="project">Project: <span className="required">*</span></label>
+                            <label for="project">Project:</label>
                             <select name="project">{projectsJSX}</select>
-                        </div>                           
-                        <div className="form-group">
-                            <label for="status">Status: <span className="required">*</span></label>
+                            <label for="status">Status:</label>
                             <select name="status">{statusJSX}</select>
-                        </div>
-                        <div className="form-group">
                             <label for="labels">Labels:</label>
                             <select name="label">{labelsJSX}</select>
                         </div>
-                        <input type="submit" value="ADD" />
-                        <button type="button" onClick={this.toggleDisplay}>Cancel</button>
+                        <div className="form-group">
+                            <input type="submit" value="Add" />
+                            <button type="button" onClick={this.toggleDisplay}>Cancel</button>
+                        </div>
                         </form>
                     </div>
                 </div>                        
@@ -78,7 +76,9 @@ class AddTodo extends Component {
             <div>
                 <div className="row">
                     <div className="col-sm-12">
-                    <button style={{ display: this.state.addNewButtonDisplay }} className="btn btn-default" onClick={this.toggleDisplay}>Add New Task</button>
+                        <div className="add-new-btn">
+                            <button style={{ display: this.state.addNewButtonDisplay }} className="pull-right" onClick={this.toggleDisplay}>Add New</button>
+                        </div>
                     </div>
                 </div>
             </div>

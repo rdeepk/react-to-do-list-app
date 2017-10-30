@@ -13,7 +13,7 @@ class TodoListByProject extends Component {
                                     />
         })
         return (
-            <div>{TodoByProjectJSX}</div>
+            <div className="todos-default">{TodoByProjectJSX}</div>
         )
     }
 }

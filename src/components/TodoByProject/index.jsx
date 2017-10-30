@@ -22,8 +22,12 @@ class TodoByProject extends Component {
 
     render() {
         let editLabelsJSX = this.props.todo.labels.map((label, i) => {
-            return <div><input type="checkbox" name="labels" id={label.id} checked={label.ischecked}/>
-            <label htmlFor="labels">{this.props.getTitleById('labels', Number(label.id)).title}</label></div>
+            return <div className="edit-labels">   
+                        <label htmlFor="labels">
+                            <input type="checkbox" name="labels" id={label.id} checked={label.ischecked}/>
+                            {this.props.getTitleById('labels', Number(label.id)).title}
+                        </label>
+                    </div>
         })
 
         let existingTodoStatus;
@@ -40,32 +44,34 @@ class TodoByProject extends Component {
         })
 
         let labelsJSX = validLabels.map((label, i) => {
-            return <div><input type="checkbox" name="labels" value={label.id} checked="checked" />
-                   <label htmlFor="labels">{this.props.getTitleById('labels', Number(label.id)).title}</label></div>
+            return <div className="todo-label">
+                        <label htmlFor="labels">
+                            <input type="checkbox" name="labels" value={label.id} checked="checked" />
+                            {this.props.getTitleById('labels', Number(label.id)).title}
+                        </label>
+                    </div>
         })
 
+        let status = this.props.getTitleById('status', Number(this.props.todo.status)).title;
+        let statusClass = status.toLowerCase().split(' ').join('-');
+
         return (
-           
-            <div>
-                <div style={{ display: this.state.showTodoDisplay }} className="todo list-group-item">
+            <div className={"item " + statusClass}>
+                <div style={{ display: this.state.showTodoDisplay }}>
                     <div className="row">
-                        <div className="col-sm-2"><input type="checkbox" value="on" /></div>
-                        <div className="col-sm-8">Title: {this.props.todo.title}</div>
-                        <div className="col-sm-2"><button onClick={this.toggleDisplay}>Edit</button></div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-8 col-sm-offset-2"><div className="description">Description: {this.props.todo.description}</div></div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-8 col-sm-offset-2"><div className="labels">Labels: {labelsJSX}</div></div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-8 col-sm-offset-2">
-                            <div className="status">Status: {this.props.getTitleById('status', Number(this.props.todo.status)).title}</div>
+                        <div className="col-xs-3 col-md-2 check">
+                            <div><i className="fa fa-check" aria-hidden="true"></i></div>
+                            <div><button className="edit-link" onClick={this.toggleDisplay}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button></div>
+                        </div>
+                        <div className="col-xs-9 col-md-10 display">
+                            <div className="title"><strong>Task:</strong> {this.props.todo.title}</div>
+                            <div className="description"><strong>Description:</strong> {this.props.todo.description}</div>
+                            <div className="labels"><strong>Labels:</strong> {labelsJSX}</div>
+                            <div className="status"><strong>Status:</strong> {status}</div>
                         </div>
                     </div>
                 </div>
-                 <div style={{ display: this.state.editTodoDisplay }} className="todo-edit list-group-item">
+                 <div style={{ display: this.state.editTodoDisplay }} className="edit">
                     <div className="row">
                         <div className="col-md-10 col-md-offset-1">
                             <form id="editTodoForm" ref={(form) => { this.form = form }}

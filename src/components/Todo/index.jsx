@@ -28,14 +28,22 @@ class Todo extends Component {
         })
 
         let labelsJSX = validLabels.map((label, i) => {
-            return <div className="todo-label"><input type="checkbox" name="labels" value={label.id} checked="checked" />
-                   <label htmlFor="labels">{this.props.getTitleById('labels', Number(label.id)).title}</label></div>
+            return <div className="todo-label">
+                        <label htmlFor="labels">
+                            <input type="checkbox" name="labels" value={label.id} checked="checked" />
+                            {this.props.getTitleById('labels', Number(label.id)).title}
+                        </label>
+                    </div>
         })
 
         
         let editLabelsJSX = this.props.todo.labels.map((label, i) => {
-            return <div className="edit-labels"><input type="checkbox" name="labels" id={label.id} checked={label.ischecked}/>
-            <label htmlFor="labels">{this.props.getTitleById('labels', Number(label.id)).title}</label></div>
+            return <div className="edit-labels">   
+                        <label htmlFor="labels">
+                            <input type="checkbox" name="labels" id={label.id} checked={label.ischecked}/>
+                            {this.props.getTitleById('labels', Number(label.id)).title}
+                        </label>
+                    </div>
         })
 
         let existingTodoStatus;
@@ -45,18 +53,20 @@ class Todo extends Component {
             }
                 return <option value={item.id} >{item.title}</option>
         })
+
         let status = this.props.getTitleById('status', Number(this.props.todo.status)).title;
         let statusClass = status.toLowerCase().split(' ').join('-');
+        
         return (
             <div className={"item " + statusClass}>
                 <div style={{ display: this.state.showTodoDisplay }} className="row">
-                    <div className="col-sm-3 check">
-                        <input type="checkbox" value="on" />
-                        <button className="edit-link" onClick={this.toggleDisplay}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <div className="col-xs-3 col-md-2 check">
+                        <div><i className="fa fa-check" aria-hidden="true"></i></div>
+                        <div><button className="edit-link" onClick={this.toggleDisplay}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button></div>
                     </div>
-                    <div className="col-sm-9 display">
+                    <div className="col-xs-9 col-md-10 display">
                         <div className="Project"><strong>Project:</strong> {this.props.getTitleById('projects', Number(this.props.todo.project)).title}</div>
-                            <div className="title"><strong>Todo:</strong> {this.props.todo.title}</div>
+                            <div className="title"><strong>Task:</strong> {this.props.todo.title}</div>
                             <div className="description"><strong>Description:</strong> {this.props.todo.description}</div>
                             <div className="labels"><strong>Labels:</strong> {labelsJSX}</div>
                             <div className="status"><strong>Status:</strong> {status}</div>

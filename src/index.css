@@ -1,33 +1,74 @@
 body {
-    color: #777;
+    color: #111;
+    font-size: 16px;
+    margin-bottom: 100px;
 }
 
 label {
     font-weight: normal;
 }
-button {
+
+button,
+input[type=submit] {
     padding: 10px 15px;
-    background: #fff;
+    background: #ccc;
     border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 10px;
 }
 
-button:focus {
+.form-control:focus,
+button:focus,
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill,
+input[type=submit]:focus {
     outline: none;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid #ccc;
 }
 
 select {
     background: #fff;
     border: 1px solid #ccc;
     padding: 10px 15px;
+    border-radius: 4px;
+}
+
+h1 {
+    padding: 50px;
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.todos-default {
+    display: flex;
+    flex-flow: wrap;
 }
 
 .todos-default .item {
     border: 1px solid #ccc;
     padding: 30px 10px;
     margin: 15px;
-    border-radius: 5px;
-    width: 47%;
+    /*width: 47%;
     float: left;
+    */
+    flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+    .todos-default .item {
+        flex: 1 1 47%;
+    }
 }
 
 .todos-default .item .display div {
@@ -42,32 +83,42 @@ select {
     padding-left: 30px;
 }
 
+.check .fa {
+    font-size: 3rem;
+}
+
+.check > div {
+    margin: 0 0 20px;
+}
+
 .todos-default .item .edit-link {
     background: transparent;
     border: none;
     display: block;
-    padding: 10px 0;
+    padding: 0;
+    margin: 0;
 }
+
 .todos-default .item .labels .todo-label {
     display: inline-block;
     font-style: italic;
-    background-color: #f1f1f1;
-    font-size: 0.857em;
-    padding: 2px 5px 0;
+    background-color: #eee;
+    font-size: 0.9em;
+    padding: 2px 10px 0;
     border-radius: 3px;
-    margin: 0 2px;
+    margin: 5px 2px;
 }
 
 .todos-default .item.complete {
-    border-left: 10px solid rgb(188, 236, 153);
+    border-left: 20px solid rgb(188, 236, 153);
 }
 
 .todos-default .item.not-started {
-    border-left: 10px solid rgb(245, 96, 96);
+    border-left: 20px solid rgb(245, 96, 96);
 }
 
 .todos-default .item.active {
-    border-left: 10px solid rgb(245, 229, 86);
+    border-left: 20px solid rgb(245, 229, 86);
 }
 
 .todos-default .item select {
@@ -91,6 +142,33 @@ select {
     margin-right: 10px;
 }
 
-.todos-default .item .edit .edit-labels button{
- 
+.add-new-task section {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 0 15px 20px;
+    border-radius: 4px;
+}
+
+.add-new-task section h3 {
+    text-align: center;
+}
+.add-new-task section .form-group label {
+    padding: 0 10px 0 0;
+}
+
+.add-new-task section .form-group select {
+    margin-right: 30px;
+}
+
+.project-header,
+.add-new-btn,
+.filters {
+    margin: 0 15px;
+}
+
+.filters button {
+    display: inline-block;
+}
+.filters select {
+    margin-right: 10px;
 }

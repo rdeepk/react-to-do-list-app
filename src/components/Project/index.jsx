@@ -17,12 +17,12 @@ class Project extends Component {
         return (
             <div className="project">
                 <div className="row">
-                    <div className="col-sm-6">
-                        <h1>Project: {this.props.title}</h1>
+                    <div className="col-xs-12">
+                        <div className="project-header">
+                            <h3>Project: {this.props.title}</h3>
+                            <button onClick={()=>{this.clearComplete(this.props.id)}}>Clear Complete</button>
+                        </div>
                     </div>
-                    <div className="col-sm-6">
-                     <button class="pull-right btn btn-default" onClick={()=>{this.clearComplete(this.props.id)}}>Clear Complete</button>
-                     </div>
                 </div>
                 
                 <TodoListByProject  todos={this.props.todos}
