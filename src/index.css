@@ -58,7 +58,6 @@ h1 {
 
 h3 {
     text-align: center;
-    text-transform: uppercase;
 }
 
 .todos-default {
@@ -122,15 +121,15 @@ h3 {
 }
 
 .todos-default .item.complete {
-    border-left: 20px solid rgb(188, 236, 153);
+    border-left: 20px solid #76FF03;
 }
 
 .todos-default .item.not-started {
-    border-left: 20px solid rgb(245, 96, 96);
+    border-left: 20px solid #D32F2F;
 }
 
 .todos-default .item.active {
-    border-left: 20px solid rgb(245, 229, 86);
+    border-left: 20px solid #FFFF00;
 }
 
 .todos-default .item select {
@@ -142,16 +141,23 @@ h3 {
     outline: none;
 }
 
-.todos-default .item .edit .edit-labels {
+.todos-default .item .edit .edit-labels,
+.add-new-task .labels {
     display: inline-block;
 }
 
-.todos-default .item .edit .edit-labels input{
+.todos-default .item .edit .edit-labels input,
+.add-new-task .labels input{
     margin: 0 2px;
 }
 
-.todos-default .item .edit .edit-labels label{
+.todos-default .item .edit .edit-labels label,
+.add-new-task .labels label{
     margin-right: 10px;
+}
+
+.add-new-task .labels {
+    margin: 30px 0;
 }
 
 .add-new-task section {
@@ -177,6 +183,10 @@ h3 {
 .filters {
     margin: 0 15px;
     text-align: center;
+}
+
+.project-header h3 {
+    margin: 30px 0;
 }
 
 .filters button {

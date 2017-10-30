@@ -33,8 +33,11 @@ class AddTodo extends Component {
             return <option value={item.id}>{item.title}</option>
         })
 
-        let labelsJSX = this.props.labels.map((label, i) =>{
-            return <option value={label.id}>{label.title}</option>
+        let editLabelsJSX = this.props.labels.map((label, i) => {
+            return   <label htmlFor="labels">
+                        <input type="checkbox" name="labels" id={label.id}/>
+                        {label.title}
+                    </label>
         })
 
         return (
@@ -62,8 +65,7 @@ class AddTodo extends Component {
                             <select name="project">{projectsJSX}</select>
                             <label for="status">Status:</label>
                             <select name="status">{statusJSX}</select>
-                            <label for="labels">Labels:</label>
-                            <select name="label">{labelsJSX}</select>
+                            <label class="labels">Labels: {editLabelsJSX}</label>
                         </div>
                         <div className="form-group">
                             <input type="submit" value="Add" />

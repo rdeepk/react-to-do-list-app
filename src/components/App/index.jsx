@@ -8,33 +8,51 @@ import ProjectList from '../ProjectList';
 class App extends Component {
   constructor(props) {
     super(props)
+    this.getCompleteTasksCount = () => {
+      let count = 0;
+      props.todos.forEach((todo, i) => {
+        if(Number(todo.status) === 101) {
+          count++;
+        }
+      })
+      return count;
+    }
+
     this.state = {
       todos: props.todos,
       projects: props.projects,
       status: props.status,
-      labels: props.labels
+      labels: props.labels,
+      competeTasksCounter: this.getCompleteTasksCount()
     }
   }
 
   getNextId = (arrName => arrName[arrName.length-1].id+1);
 
+  setCompleteTasksCounter = () => {
+    let count = 0;
+    this.state.todos.forEach((todo, i) => {
+      if(Number(todo.status) === 101) {
+        count++;
+      }
+    })
+    return count;
+  }
+
   addNewTask = (todo) => {
     let labels = [];
     this.state.labels.forEach((label, i) =>{
-      console.log(todo.label.value)
-      console.log(label.id)
-      if(Number(todo.label.value) === label.id){
-        labels[i] = {
-          id: todo.label.value,
-          ischecked: true
-        } 
-      } else {
-        labels[i] = {
-          id: todo.label.value,
-          ischecked: false
-        } 
+      for(let k = 0; k < todo.labels.length; k++) {
+        if(Number(todo.labels[k].id) === label.id) {
+          labels[i] = {
+            id: label.id,
+            ischecked: todo.labels[k].checked
+          } 
+          break;
+        }
       }
     })
+
     let newTodo = {
       id: this.getNextId(this.state.todos),
       title: todo.title.value,
@@ -45,6 +63,7 @@ class App extends Component {
     }
     this.state.todos.push(newTodo)
     this.setState(this.state.todos)
+    this.setCompleteTasksCounter();
   }
 
   updateTask = (task, id) => {
@@ -60,6 +79,7 @@ class App extends Component {
         this.setState(this.state.todos);
       }
     })
+    this.setCompleteTasksCounter();
   }
 
   getTitleById = (name, id) => {
@@ -77,6 +97,7 @@ class App extends Component {
       })
     })
     this.setState(this.state.todos);
+    this.setCompleteTasksCounter();
   }
 
 

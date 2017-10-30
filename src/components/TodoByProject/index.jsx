@@ -55,13 +55,32 @@ class TodoByProject extends Component {
         let status = this.props.getTitleById('status', Number(this.props.todo.status)).title;
         let statusClass = status.toLowerCase().split(' ').join('-');
 
+
+
+        let getIcon = () => {
+            let icon;
+            switch(statusClass) {
+                case 'active':
+                    icon = <i className="fa fa-ellipsis-h" aria-hidden="true" title="Active"></i>
+                    break;
+                case 'complete':
+                    icon = <i className="fa fa-check" aria-hidden="true" title="Completed"></i>
+                    break;
+                case 'not-started':
+                    icon = <i className="fa fa-book" aria-hidden="true" title="Not Started"></i>
+                    break;
+            }
+            return icon;
+        }
+
+
         return (
             <div className={"item " + statusClass}>
                 <div style={{ display: this.state.showTodoDisplay }}>
                     <div className="row">
                         <div className="col-xs-3 col-md-2 check">
-                            <div><i className="fa fa-check" aria-hidden="true"></i></div>
-                            <div><button className="edit-link" onClick={this.toggleDisplay}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button></div>
+                            <div>{getIcon()}</div>
+                            <div><button className="edit-link" onClick={this.toggleDisplay}><i className="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i></button></div>
                         </div>
                         <div className="col-xs-9 col-md-10 display">
                             <div className="title"><strong>Task:</strong> {this.props.todo.title}</div>
