@@ -28,13 +28,13 @@ class Todo extends Component {
         })
 
         let labelsJSX = validLabels.map((label, i) => {
-            return <div><input type="checkbox" name="labels" value={label.id} checked="checked" />
+            return <div className="todo-label"><input type="checkbox" name="labels" value={label.id} checked="checked" />
                    <label htmlFor="labels">{this.props.getTitleById('labels', Number(label.id)).title}</label></div>
         })
 
         
         let editLabelsJSX = this.props.todo.labels.map((label, i) => {
-            return <div><input type="checkbox" name="labels" id={label.id} checked={label.ischecked}/>
+            return <div className="edit-labels"><input type="checkbox" name="labels" id={label.id} checked={label.ischecked}/>
             <label htmlFor="labels">{this.props.getTitleById('labels', Number(label.id)).title}</label></div>
         })
 
@@ -45,41 +45,42 @@ class Todo extends Component {
             }
                 return <option value={item.id} >{item.title}</option>
         })
-
+        let status = this.props.getTitleById('status', Number(this.props.todo.status)).title;
+        let statusClass = status.toLowerCase().split(' ').join('-');
         return (
-            <div className="list-group-item">
+            <div className={"item " + statusClass}>
                 <div style={{ display: this.state.showTodoDisplay }} className="row">
-                    <div className="col-sm-9">
+                    <div className="col-sm-3 check">
                         <input type="checkbox" value="on" />
-                        <div className="Project">Project: {this.props.getTitleById('projects', Number(this.props.todo.project)).title}</div>
-                            <div className="title">Todo title: {this.props.todo.title}</div>
-                            <div className="description">Dsscriprion: {this.props.todo.description}</div>
-                            <div className="labels">Labels: {labelsJSX}</div>
-                            <div className="status">Status: {this.props.getTitleById('status', Number(this.props.todo.status)).title}</div>
+                        <button className="edit-link" onClick={this.toggleDisplay}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                     </div>
-                    <div className="col-sm-3">
-                    <button onClick={this.toggleDisplay}>Edit</button>
+                    <div className="col-sm-9 display">
+                        <div className="Project"><strong>Project:</strong> {this.props.getTitleById('projects', Number(this.props.todo.project)).title}</div>
+                            <div className="title"><strong>Todo:</strong> {this.props.todo.title}</div>
+                            <div className="description"><strong>Description:</strong> {this.props.todo.description}</div>
+                            <div className="labels"><strong>Labels:</strong> {labelsJSX}</div>
+                            <div className="status"><strong>Status:</strong> {status}</div>
                     </div>
                 </div>
-                 <div style={{ display: this.state.editTodoDisplay }} className="todo-edit list-group-item">
+                 <div style={{ display: this.state.editTodoDisplay }} className="edit">
                     <div className="row">
                         <div className="col-md-10 col-md-offset-1">
                             <form id="editTodoForm" ref={(form) => { this.form = form }}
                                 onChange={(e) => { this.handleFormSubmit(e) }}>
                                 <div className="form-group">
-                                    <label htmlFor="title">Title: <span className="required">*</span></label>
+                                    <label htmlFor="title">Title:</label>
                                     <input type="text" value={this.props.todo.title} name="title" required="required" className="form-control" />
                                 </div>
                                 <div className="form-group">
-                                    <label  htmlFor="description">Description: <span className="required">*</span></label>
+                                    <label  htmlFor="description">Description:</label>
                                     <input type="text" name="description" value={this.props.todo.description} required="required" className="form-control" />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="status">Status: <span className="required">*</span></label>
+                                    <label htmlFor="status">Status:</label>
                                     <select name="status" value={existingTodoStatus}>{statusJSX}</select>
                                 </div>
                                 <div className="form-group hidden">
-                                    <label htmlFor="project">Project: <span className="required">*</span></label>
+                                    <label htmlFor="project">Project:</label>
                                     <select name="project" value ={this.props.project}></select>
                                 </div>
                                 <div className="form-group">

@@ -1,1 +1,96 @@
+body {
+    color: #777;
+}
 
+label {
+    font-weight: normal;
+}
+button {
+    padding: 10px 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+button:focus {
+    outline: none;
+}
+
+select {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+}
+
+.todos-default .item {
+    border: 1px solid #ccc;
+    padding: 30px 10px;
+    margin: 15px;
+    border-radius: 5px;
+    width: 47%;
+    float: left;
+}
+
+.todos-default .item .display div {
+    padding: 5px 0;
+}
+
+.todos-default .item .labels input{
+    display: none;
+}
+
+.todos-default .item .check {
+    padding-left: 30px;
+}
+
+.todos-default .item .edit-link {
+    background: transparent;
+    border: none;
+    display: block;
+    padding: 10px 0;
+}
+.todos-default .item .labels .todo-label {
+    display: inline-block;
+    font-style: italic;
+    background-color: #f1f1f1;
+    font-size: 0.857em;
+    padding: 2px 5px 0;
+    border-radius: 3px;
+    margin: 0 2px;
+}
+
+.todos-default .item.complete {
+    border-left: 10px solid rgb(188, 236, 153);
+}
+
+.todos-default .item.not-started {
+    border-left: 10px solid rgb(245, 96, 96);
+}
+
+.todos-default .item.active {
+    border-left: 10px solid rgb(245, 229, 86);
+}
+
+.todos-default .item select {
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.todos-default .item select:focus {
+    outline: none;
+}
+
+.todos-default .item .edit .edit-labels {
+    display: inline-block;
+}
+
+.todos-default .item .edit .edit-labels input{
+    margin: 0 2px;
+}
+
+.todos-default .item .edit .edit-labels label{
+    margin-right: 10px;
+}
+
+.todos-default .item .edit .edit-labels button{
+ 
+}

@@ -12,7 +12,7 @@ class TodoList extends Component {
                             />
         })
         return (
-            <div className="list-group">{todosJSX}</div>
+            <div className="todos-default">{todosJSX}</div>
         )
     }
 }
