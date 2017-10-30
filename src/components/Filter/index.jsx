@@ -9,24 +9,9 @@ class Filter extends Component {
             selectValue: "all",
             filteredTodos: this.props.todos,
             todosFilter: "default",
-            displayTodos: this.defaultTodos
+            todoListIsHidden: false,
+            projectListIsHidden: true
         }
-        this.defaultTodos = <TodoList   projects={this.props.projects}
-                                        todos={this.state.filteredTodos}
-                                        getTitleById = {this.props.getTitleById}
-                                        removeTodos={this.props.removeTodos}
-                                        status={this.props.status}
-                                        updateTask={this.props.updateTask}
-                                        />;
-        this.todosByProject = <ProjectList  projects={this.props.projects}
-                                            todos={this.state.filteredTodos}
-                                            getTitleById = {this.props.getTitleById}
-                                            status={this.props.status}
-                                            labels={this.props.labels}
-                                            updateTask={this.props.updateTask}
-                                            removeTodos={this.props.removeTodos}
-                                        />;
-
     }
 
 
@@ -83,22 +68,14 @@ class Filter extends Component {
     handleTodosFilter = (e) => {
         this.setState({
             todosFilter: e.target.value
-        }, () => this.todosJSX());
+        }, () => this.toggleDisplay());
     }
 
-    todosJSX = () => {
-        console.log(this.state.todosFilter)
-        switch(this.state.todosFilter) {
-            case "default":
-                this.setState({
-                    displayTodos: this.defaultTodos
-                })
-            break;
-            case "filterByProject":
-                this.setState({
-                    displayTodos: this.todosByProject
-                })
-        }
+    toggleDisplay = () => {
+        this.setState({
+            projectListIsHidden: this.state.projectListIsHidden ? false : true,
+            todoListIsHidden: this.state.todoListIsHidden ? false : true
+         }) 
     }
 
     render() {
@@ -127,7 +104,23 @@ class Filter extends Component {
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
-                            {this.state.displayTodos? this.state.displayTodos: this.defaultTodos }
+                        {!this.state.todoListIsHidden && 
+                        <TodoList style={{ display: this.state.displayDefaultTodos }}   projects={this.props.projects}
+                                        todos={this.state.filteredTodos}
+                                        getTitleById = {this.props.getTitleById}
+                                        removeTodos={this.props.removeTodos}
+                                        status={this.props.status}
+                                        updateTask={this.props.updateTask}
+                                        />}
+                        {!this.state.projectListIsHidden &&
+                        <ProjectList style={{ display: this.state.displayTodosByProject }}  projects={this.props.projects}
+                            todos={this.state.filteredTodos}
+                            getTitleById = {this.props.getTitleById}
+                            status={this.props.status}
+                            labels={this.props.labels}
+                            updateTask={this.props.updateTask}
+                            removeTodos={this.props.removeTodos}
+                        />}
                         </div>
                     </div>
                 </div>
