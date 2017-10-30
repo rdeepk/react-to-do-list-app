@@ -10,7 +10,8 @@ class Filter extends Component {
             filteredTodos: this.props.todos,
             todosFilter: "default",
             todoListIsHidden: false,
-            projectListIsHidden: true
+            projectListIsHidden: true,
+            displayClearForDefaultTodos: "block"
         }
     }
 
@@ -74,7 +75,8 @@ class Filter extends Component {
     toggleDisplay = () => {
         this.setState({
             projectListIsHidden: this.state.projectListIsHidden ? false : true,
-            todoListIsHidden: this.state.todoListIsHidden ? false : true
+            todoListIsHidden: this.state.todoListIsHidden ? false : true,
+            displayClearForDefaultTodos: this.state.displayClearForDefaultTodos === "none" ? "block" : "none"
          }) 
     }
 
@@ -99,13 +101,13 @@ class Filter extends Component {
                             
                         </div>
                         <div className="col-sm-4">
-                            <button className="pull-right btn btn-default" onClick={()=>{this.handleClearComplete(this.props.id)}}>Clear Complete</button>
+                            <button style={{ display: this.state.displayClearForDefaultTodos }} className="pull-right btn btn-default" onClick={()=>{this.handleClearComplete(this.props.id)}}>Clear Complete</button>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12">
                         {!this.state.todoListIsHidden && 
-                        <TodoList style={{ display: this.state.displayDefaultTodos }}   projects={this.props.projects}
+                        <TodoList projects={this.props.projects}
                                         todos={this.state.filteredTodos}
                                         getTitleById = {this.props.getTitleById}
                                         removeTodos={this.props.removeTodos}
@@ -113,7 +115,7 @@ class Filter extends Component {
                                         updateTask={this.props.updateTask}
                                         />}
                         {!this.state.projectListIsHidden &&
-                        <ProjectList style={{ display: this.state.displayTodosByProject }}  projects={this.props.projects}
+                        <ProjectList projects={this.props.projects}
                             todos={this.state.filteredTodos}
                             getTitleById = {this.props.getTitleById}
                             status={this.props.status}
