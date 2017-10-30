@@ -37,7 +37,7 @@ class Todo extends Component {
 
         //Makes jsx for the display mode of valid labels for todos
         let labelsJSX = validLabels.map((label, i) => {
-            return <div className="todo-label">
+            return <div key={i} className="todo-label">
                         <label htmlFor="labels">
                             <input type="checkbox" name="labels" value={label.id} checked="checked" />
                             {this.props.getTitleById('labels', Number(label.id)).title}
@@ -47,7 +47,7 @@ class Todo extends Component {
 
         //Makes jsx for the edit mode of labels for todos
         let editLabelsJSX = this.props.todo.labels.map((label, i) => {
-            return <div className="edit-labels">   
+            return <div key={i} className="edit-labels">   
                         <label htmlFor="labels">
                             <input type="checkbox" name="labels" id={label.id} checked={label.ischecked}/>
                             {this.props.getTitleById('labels', Number(label.id)).title}
@@ -63,7 +63,7 @@ class Todo extends Component {
             if(!existingTodoStatus) {
                 existingTodoStatus = (item.id === Number(this.props.todo.status)) ? item.id : '';
             }
-                return <option value={item.id} >{item.title}</option>
+                return <option value={item.id} key={i}>{item.title}</option>
         })
 
         //get status title from id of a status

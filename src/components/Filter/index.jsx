@@ -83,7 +83,7 @@ class Filter extends Component {
     render() {
         //assign status options for filter.
         let selectJSX = this.props.status.map((state, i) => {
-            return <option value={state.id}>{state.title}</option>
+            return <option value={state.id} key={i}>{state.title}</option>
         })
 
         // css for disable and enable clear complete button
@@ -91,15 +91,15 @@ class Filter extends Component {
 
         if(!this.props.competeTasksCounter) {
             clearBtnCss = {
-                "background-color": "#ccc",
-                "pointer-events": "none",
+                "backgroundColor": "#ccc",
+                "pointerEvents": "none",
                 "color": "#000",
                 display: this.state.displayClearForDefaultTodos
             }
         } else {
             clearBtnCss = {
-                "background-color": "#111",
-                "pointer-events": "auto",
+                "backgroundColor": "#111",
+                "pointerEvents": "auto",
                 "color": "#fff",
                 display: this.state.displayClearForDefaultTodos
             }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Filter from '../Filter';
 import AddTodo from '../AddTodo';
-import ProjectList from '../ProjectList';
 
 /**
  * Top level Parent component.

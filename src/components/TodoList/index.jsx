@@ -8,7 +8,8 @@ class TodoList extends Component {
     render() {
 
         let todosJSX = this.props.todos.map((todo, index)=>{
-            return <Todo    todo={todo}
+            return <Todo    key={index}
+                            todo={todo}
                             getTitleById={this.props.getTitleById}
                             status={this.props.status}
                             updateTask={this.props.updateTask}

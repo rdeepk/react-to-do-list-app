@@ -35,17 +35,17 @@ class AddTodo extends Component {
 
         //sets the options for projects dropdown in add new todo form.
         let projectsJSX = this.props.projects.map((project, i) =>{
-                return <option value={project.id}>{project.title}</option>
+                return <option value={project.id} key={i}>{project.title}</option>
         })
 
         //sets the options for status dropdown in add new todo form.
         let statusJSX = this.props.status.map((item, i) =>{
-            return <option value={item.id}>{item.title}</option>
+            return <option value={item.id} key={i}>{item.title}</option>
         })
 
         // sets checkboxes JSX for all existing labels for add new todo form.
         let editLabelsJSX = this.props.labels.map((label, i) => {
-            return   <label htmlFor="labels">
+            return   <label htmlFor="labels" key={i}>
                         <input type="checkbox" name="labels" id={label.id}/>
                         {label.title}
                     </label>
@@ -65,19 +65,19 @@ class AddTodo extends Component {
                         <form id="contactForm"  ref={(form) => { this.form = form }}
                                                 onSubmit={(e) => { this.handleFormSubmit(e) }}>
                         <div className="form-group">
-                            <label for="name">Title:</label>
+                            <label htmlFor="name">Title:</label>
                             <input type="text" name="title" required="required" className="form-control" />
                         </div>
                         <div className="form-group">
-                            <label for="description">Description:</label>
+                            <label htmlFor="description">Description:</label>
                             <input type="text" name="description" required="required" className="form-control"/>
                         </div>
                         <div className="form-group">
-                            <label for="project">Project:</label>
+                            <label htmlFor="project">Project:</label>
                             <select name="project">{projectsJSX}</select>
-                            <label for="status">Status:</label>
+                            <label htmlFor="status">Status:</label>
                             <select name="status">{statusJSX}</select>
-                            <label class="labels">Labels: {editLabelsJSX}</label>
+                            <label className="labels">Labels: {editLabelsJSX}</label>
                         </div>
                         <div className="form-group">
                             <input type="submit" value="Add" />
