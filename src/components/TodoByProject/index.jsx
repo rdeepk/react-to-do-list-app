@@ -31,7 +31,7 @@ class TodoByProject extends Component {
             if(!existingTodoStatus) {
                 existingTodoStatus = (item.id === Number(this.props.todo.status)) ? item.id : '';
             }
-                return <option value={item.id} >{item.title}</option>
+                return <option value={item.id}>{item.title}</option>
         })
         
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import './App.css';
-import TodoList from '../TodoList';
+import Filter from '../Filter';
 import Projects from '../Projects';
 import AddTodo from '../AddTodo';
 import ProjectList from '../ProjectList';
@@ -17,16 +17,6 @@ class App extends Component {
   }
 
   getNextId = (arrName => arrName[arrName.length-1].id+1);
-
-  clearComplete = (projectId) => {
-    let completeTodos = [];
-    this.props.todos.forEach((todo, i) => {
-        if(Number(todo.status) === 101) {
-            completeTodos.push(todo.id);
-        }
-    })
-    this.removeTodos(completeTodos);
-}
 
   addNewTask = (todo) => {
     let labels = [];
@@ -89,37 +79,24 @@ class App extends Component {
     this.setState(this.state.todos);
   }
 
-  handleFilterByStatus = (id) => {
-
-  }
-
   render() {
 
     return (
       <div>
-        <button className="pull-right btn btn-default" onClick={()=>{this.clearComplete(this.props.id)}}>Clear Complete</button>
-        <select className="default-todos" onChange={this.handleFilterByStatus}>
-            <option value="all">all</option>
-            <option value="active">active</option>
-            <option value="complete">complete</option>
-        </select>
-        <AddTodo projects={this.state.projects}  status={this.state.status}  labels={this.state.labels} addNewTask={this.addNewTask} />
-        <TodoList projects={this.state.projects}
-                  todos={this.state.todos}
-                  getTitleById = {this.getTitleById}
-                  removeTodos={this.removeTodos}
-                  status={this.state.status}
-                  updateTask={this.updateTask}
-                  />
+        <div className="row">
+          <div className="col-sm-12">
+            <AddTodo projects={this.state.projects}  status={this.state.status}  labels={this.state.labels} addNewTask={this.addNewTask} />
+          </div>
+        </div>
+        <Filter getTitleById = {this.getTitleById}
+                removeTodos={this.removeTodos}
+                status={this.state.status}
+                updateTask={this.updateTask}
+                todos={this.state.todos}
+                projects={this.state.projects}
+                labels={this.state.labels}
+                />
         <Projects projects={this.state.projects} />
-        <ProjectList  projects={this.state.projects}
-                      todos={this.state.todos}
-                      getTitleById = {this.getTitleById}
-                      status={this.state.status}
-                      labels={this.state.labels}
-                      updateTask={this.updateTask}
-                      removeTodos={this.removeTodos}
-                      />
       </div>
     );
   }
