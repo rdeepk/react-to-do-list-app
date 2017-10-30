@@ -63,7 +63,7 @@ const todos = [
         ]
     },
     {
-        id: 1003,
+        id: 1004,
         title: 'Buy milk',
         description:'Milk is important',
         status:102,
@@ -77,7 +77,7 @@ const todos = [
         ]
     },
     {
-        id: 1003,
+        id: 1005,
         title: 'Complete Todo App',
         description:'Assignment for current week',
         status:100,

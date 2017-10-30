@@ -30,6 +30,7 @@ class Todo extends Component {
     }
     
     render() {
+        console.log(this.props.todo);
         //returns the array of checked labels for a todo
         let validLabels = this.props.todo.labels.filter((label, i)  => {
             return label.ischecked 

@@ -86,6 +86,7 @@ class App extends Component {
   * Updates an existing todo.
   */
   updateTask = (task, id) => {
+    console.log("Updating:  " +task);
     this.state.todos.forEach((todo, i) => {
       if(todo.id === id) {
         this.state.todos[i].title = task.title.value;
