@@ -10,11 +10,22 @@ label {
 
 button,
 input[type=submit] {
-    padding: 10px 15px;
-    background: #ccc;
+    padding: 10px 25px;
+    background: #111;
+    color: #fff;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 10px;
+    border-radius: 6px;
+    margin: 0 10px 10px 0;
+}
+
+button:hover,
+button:active,
+button:focus,
+input[type=submit]:focus,
+input[type=submit]:active,
+input[type=submit]:hover {
+    background: #fff;
+    color: #111;
 }
 
 .form-control:focus,
@@ -34,8 +45,8 @@ input[type=submit]:focus {
 select {
     background: #fff;
     border: 1px solid #ccc;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 11px 11px 12px;
+    border-radius: 6px;
 }
 
 h1 {
@@ -85,6 +96,7 @@ h3 {
 
 .check .fa {
     font-size: 3rem;
+    color: #000;
 }
 
 .check > div {
@@ -164,6 +176,7 @@ h3 {
 .add-new-btn,
 .filters {
     margin: 0 15px;
+    text-align: center;
 }
 
 .filters button {
@@ -171,4 +184,12 @@ h3 {
 }
 .filters select {
     margin-right: 10px;
+}
+
+.stats {
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+.stats span {
+    margin: 0 20px;
 }

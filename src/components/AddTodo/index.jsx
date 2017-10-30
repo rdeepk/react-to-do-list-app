@@ -6,14 +6,14 @@ class AddTodo extends Component {
         super();
         this.state = {
             addNewFormDisplay: "none",
-            addNewButtonDisplay: "block"
+            addNewButtonDisplay: "inline-block"
         }
     }
 
     toggleDisplay = () => {
          this.setState({
             addNewFormDisplay: this.state.addNewFormDisplay === "block" ? "none" : "block",
-            addNewButtonDisplay: this.state.addNewButtonDisplay === "block" ? "none" : "block"
+            addNewButtonDisplay: this.state.addNewButtonDisplay === "inline-block" ? "none" : "inline-block"
          })     
     }
 
@@ -77,7 +77,7 @@ class AddTodo extends Component {
                 <div className="row">
                     <div className="col-sm-12">
                         <div className="add-new-btn">
-                            <button style={{ display: this.state.addNewButtonDisplay }} className="pull-right" onClick={this.toggleDisplay}>Add New</button>
+                            <button style={{ display: this.state.addNewButtonDisplay }} onClick={this.toggleDisplay}>Add New</button>
                         </div>
                     </div>
                 </div>

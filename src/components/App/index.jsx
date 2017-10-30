@@ -79,10 +79,40 @@ class App extends Component {
     this.setState(this.state.todos);
   }
 
-  render() {
 
+  getTodoStats = () => {
+    let stats = {
+      total:0,
+      active:0,
+      complete:0
+    };
+    this.state.todos.forEach((todo, i) => {
+      stats.total++;
+      switch(Number(todo.status)) {
+        case 100:
+          stats.active++;
+          break;
+        case 101:
+          stats.complete++;
+          break;
+      }
+    })
+    return stats;
+  }
+
+  render() {
+    let stats = this.getTodoStats()
     return (
       <div>
+        <div className="row">
+          <div className="col-sm-12 stats">
+              <div className="stats">
+                <span>Total Tasks: {stats.total}</span>
+                <span>Active: {stats.active}</span>
+                <span>Complete: {stats.complete}</span>
+              </div>
+          </div>
+        </div>
         <div className="row">
           <div className="col-sm-12">
             <AddTodo projects={this.state.projects}  status={this.state.status}  labels={this.state.labels} addNewTask={this.addNewTask} />
