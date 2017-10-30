@@ -1,5 +1,5 @@
 # Todo App
-A minimal version of the Todo application allowing users to add
+A minimal version of the Todo application allowing users to add:
 - Tasks
 - Projects
 - Labels
@@ -7,8 +7,8 @@ A minimal version of the Todo application allowing users to add
 
 This is built using React. Basic functionality is:
 
-- Display all Tasks by default
-- Filter task by Project.
+- Display all Tasks by default.
+- Filter tasks by Project.
 - Functionality to add new todos.
 - Ability to edit existing todos.
 - One click clear for all completed tasks.
