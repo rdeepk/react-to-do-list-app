@@ -22,7 +22,7 @@ const status = [
 const todos = [
     {
         id: 1001,
-        title: 'learn angular',
+        title: 'Learn angular',
         description:'Want to learn angular',
         status:102,
         project:201,
@@ -36,7 +36,7 @@ const todos = [
     },
     {
         id: 1002,
-        title: 'write the content for the next module',
+        title: 'Write the content for the next module',
         description:'Needed completion',
         status:'101',
         project:201,
@@ -50,7 +50,7 @@ const todos = [
     },
     {
         id: 1003,
-        title: 'buy cheese',
+        title: 'Buy cheese',
         description:'For dinner on weekend',
         status:102,
         project:202,
@@ -64,7 +64,7 @@ const todos = [
     },
     {
         id: 1003,
-        title: 'buy milk',
+        title: 'Buy milk',
         description:'Milk is important',
         status:102,
         project:202,
@@ -73,6 +73,20 @@ const todos = [
             {id: 5002, ischecked:true},
             {id: 5003, ischecked:false},
             {id: 5004, ischecked:false},
+            {id: 5005, ischecked:false}
+        ]
+    },
+    {
+        id: 1003,
+        title: 'Complete Todo App',
+        description:'Assignment for current week',
+        status:100,
+        project:201,
+        labels:[
+            {id: 5001, ischecked:true},
+            {id: 5002, ischecked:false},
+            {id: 5003, ischecked:true},
+            {id: 5004, ischecked:true},
             {id: 5005, ischecked:false}
         ]
     }

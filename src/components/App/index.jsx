@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //import './App.css';
 import Filter from '../Filter';
-import Projects from '../Projects';
 import AddTodo from '../AddTodo';
 import ProjectList from '../ProjectList';
 
@@ -150,7 +149,6 @@ class App extends Component {
                 labels={this.state.labels}
                 competeTasksCounter={this.state.competeTasksCounter}
                 />
-        <Projects projects={this.state.projects} />
       </div>
     );
   }
