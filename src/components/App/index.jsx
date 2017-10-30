@@ -36,7 +36,9 @@ class App extends Component {
         count++;
       }
     })
-    return count;
+    this.setState({
+      competeTasksCounter: count
+    })
   }
 
   addNewTask = (todo) => {
@@ -146,6 +148,7 @@ class App extends Component {
                 todos={this.state.todos}
                 projects={this.state.projects}
                 labels={this.state.labels}
+                competeTasksCounter={this.state.competeTasksCounter}
                 />
         <Projects projects={this.state.projects} />
       </div>

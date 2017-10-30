@@ -84,6 +84,23 @@ class Filter extends Component {
         let selectJSX = this.props.status.map((state, i) => {
             return <option value={state.id}>{state.title}</option>
         })
+        let clearBtnCss = {};
+
+        if(!this.props.competeTasksCounter) {
+            clearBtnCss = {
+                "background-color": "#ccc",
+                "pointer-events": "none",
+                "color": "#000",
+                display: this.state.displayClearForDefaultTodos
+            }
+        } else {
+            clearBtnCss = {
+                "background-color": "#111",
+                "pointer-events": "auto",
+                "color": "#fff",
+                display: this.state.displayClearForDefaultTodos
+            }
+        }
 
         return (
 
@@ -91,7 +108,7 @@ class Filter extends Component {
                 <div className="row">
                     <div className="col-xs-12">
                         <div className="filters">
-                            <button style={{ display: this.state.displayClearForDefaultTodos }} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button>
+                            <button style={clearBtnCss} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button>
                             <select className="todos-by-status" value={this.state.selectValue} onChange={this.handleFilterByStatus}>
                                 <option value="all">All</option>
                                 {selectJSX}

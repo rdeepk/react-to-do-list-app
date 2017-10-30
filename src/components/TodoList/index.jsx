@@ -9,6 +9,7 @@ class TodoList extends Component {
                             getTitleById={this.props.getTitleById}
                             status={this.props.status}
                             updateTask={this.props.updateTask}
+                            competeTasksCounter={this.props.competeTasksCounter}
                             />
         })
         return (

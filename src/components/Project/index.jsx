@@ -14,13 +14,34 @@ class Project extends Component {
     }
 
     render() {
+        let completeTasksCount = 0;
+        this.props.todos.forEach((todo, i) => {
+          if(Number(todo.status) === 101) {
+            completeTasksCount++;
+          }
+        })
+
+        let clearBtnCss;
+        if(!completeTasksCount) {
+            clearBtnCss = {
+                "background-color": "#ccc",
+                "pointer-events": "none",
+                "color": "#000"
+            }
+        } else {
+            clearBtnCss = {
+                "background-color": "#111",
+                "pointer-events": "auto",
+                "color": "#fff"
+            }
+        }
         return (
             <div className="project">
                 <div className="row">
                     <div className="col-xs-12">
                         <div className="project-header">
                             <h3>Project: {this.props.title}</h3>
-                            <button onClick={()=>{this.clearComplete(this.props.id)}}>Clear Complete</button>
+                            <button style={clearBtnCss} onClick={()=>{this.clearComplete(this.props.id)}}>Clear Complete</button>
                         </div>
                     </div>
                 </div>
