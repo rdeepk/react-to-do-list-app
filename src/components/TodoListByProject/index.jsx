@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import TodoByProject from '../TodoByProject';
 
+/**
+* For handling list of todos by a project.
+*/
 class TodoListByProject extends Component {
     render(){
         let TodoByProjectJSX = this.props.todos.map((todo, i) => {

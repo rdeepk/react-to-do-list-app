@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+/**
+* The child component to display individual toto in default format.
+*/
 class Todo extends Component {
     constructor() {
         super();
@@ -9,6 +12,9 @@ class Todo extends Component {
         }
     }
 
+    /**
+    * Sets the state to toggle display between todos in display or edit mode.
+    */
     toggleDisplay = () => {
         this.setState({
             showTodoDisplay: this.state.showTodoDisplay === "block" ? "none" : "block",
@@ -16,16 +22,20 @@ class Todo extends Component {
         })
     }
 
+    /**
+    * Handler to submit form data after editing a todo.
+    */
     handleFormSubmit(e) {
         this.props.updateTask(this.form, this.props.todo.id)
     }
     
     render() {
-
+        //returns the array of checked labels for a todo
         let validLabels = this.props.todo.labels.filter((label, i)  => {
             return label.ischecked 
         })
 
+        //Makes jsx for the display mode of valid labels for todos
         let labelsJSX = validLabels.map((label, i) => {
             return <div className="todo-label">
                         <label htmlFor="labels">
@@ -35,7 +45,7 @@ class Todo extends Component {
                     </div>
         })
 
-        
+        //Makes jsx for the edit mode of labels for todos
         let editLabelsJSX = this.props.todo.labels.map((label, i) => {
             return <div className="edit-labels">   
                         <label htmlFor="labels">
@@ -44,8 +54,11 @@ class Todo extends Component {
                         </label>
                     </div>
         })
-
+        
+        //to store the selected value of status for a todo.
         let existingTodoStatus;
+
+        //sets status options for select dropdown for a todo
         let statusJSX = this.props.status.map((item, i) => {
             if(!existingTodoStatus) {
                 existingTodoStatus = (item.id === Number(this.props.todo.status)) ? item.id : '';
@@ -53,9 +66,13 @@ class Todo extends Component {
                 return <option value={item.id} >{item.title}</option>
         })
 
+        //get status title from id of a status
         let status = this.props.getTitleById('status', Number(this.props.todo.status)).title;
+
+        //make css name to add styles as per the current value of status
         let statusClass = status.toLowerCase().split(' ').join('-');
 
+        //get the right icon to be displayed on a todo depending upon status.
         let getIcon = () => {
             let icon;
             switch(statusClass) {
@@ -74,6 +91,7 @@ class Todo extends Component {
         
         return (
             <div className={"item " + statusClass}>
+                {/* display of todos and visible by default */}
                 <div style={{ display: this.state.showTodoDisplay }} className="row">
                     <div className="col-xs-3 col-md-2 check">
                         <div>{getIcon()}</div>
@@ -87,6 +105,7 @@ class Todo extends Component {
                             <div className="status"><strong>Status:</strong> {status}</div>
                     </div>
                 </div>
+                {/* form to edit a todo and hidden by default and is visible when user clicks on edit link */}
                  <div style={{ display: this.state.editTodoDisplay }} className="edit">
                     <div className="row">
                         <div className="col-md-10 col-md-offset-1">

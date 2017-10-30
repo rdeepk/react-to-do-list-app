@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-//import './App.css';
 import Filter from '../Filter';
 import AddTodo from '../AddTodo';
 import ProjectList from '../ProjectList';
 
+/**
+ * Top level Parent component.
+ */
 class App extends Component {
   constructor(props) {
     super(props)
+
+    /**
+    * Sets the default state for competeTasksCounter.
+    */
     this.getCompleteTasksCount = () => {
       let count = 0;
       props.todos.forEach((todo, i) => {
@@ -26,8 +32,15 @@ class App extends Component {
     }
   }
 
+  /**
+    * Takes array as param and use id key return an incremented value.
+    */
   getNextId = (arrName => arrName[arrName.length-1].id+1);
 
+
+  /**
+  * Recalculates the count of completed todos.
+  */
   setCompleteTasksCounter = () => {
     let count = 0;
     this.state.todos.forEach((todo, i) => {
@@ -40,6 +53,9 @@ class App extends Component {
     })
   }
 
+  /**
+  * Adds new todo.
+  */
   addNewTask = (todo) => {
     let labels = [];
     this.state.labels.forEach((label, i) =>{
@@ -67,6 +83,9 @@ class App extends Component {
     this.setCompleteTasksCounter();
   }
 
+  /**
+  * Updates an existing todo.
+  */
   updateTask = (task, id) => {
     this.state.todos.forEach((todo, i) => {
       if(todo.id === id) {
@@ -83,12 +102,18 @@ class App extends Component {
     this.setCompleteTasksCounter();
   }
 
+  /**
+  * Takes id and name of the object and returns corresponding title.
+  */
   getTitleById = (name, id) => {
     return this.props[name].find((key, index) => {
         return key.id === id;
     });
   }
 
+  /**
+  * Deletes a todo.
+  */
   removeTodos = (todoIdArray) => {
     todoIdArray.forEach((id, i) => {
       this.state.todos.forEach((todo, index) => {
@@ -101,7 +126,9 @@ class App extends Component {
     this.setCompleteTasksCounter();
   }
 
-
+  /**
+  * Calculates and return stats for total, active and completed tasks.
+  */
   getTodoStats = () => {
     let stats = {
       total:0,
@@ -123,6 +150,7 @@ class App extends Component {
   }
 
   render() {
+    //lets get fresh todo stats
     let stats = this.getTodoStats()
     return (
       <div>

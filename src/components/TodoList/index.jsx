@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import Todo from '../Todo';
 
+/**
+* Provides the List of todos for default display.
+*/
 class TodoList extends Component {
     render() {
 

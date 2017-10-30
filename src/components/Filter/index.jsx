@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import TodoList from '../TodoList';
 import ProjectList from '../ProjectList';
 
+/**
+* Filters data as required by child components.
+*/
 class Filter extends Component {
     constructor(props) {
         super(props);
@@ -15,24 +18,9 @@ class Filter extends Component {
         }
     }
 
-
-    filterByStatus = () => {
-        let status = {};
-        this.props.todos.map((todo, index) => {
-            //check if project is already initialized
-            let statusExists = typeof status[todo.status] !== 'undefined' && status[todo.status] instanceof Array
-            //if not then initialize it
-            status[todo.status] = statusExists ? status[todo.status] : [];
-            let task = {};
-            for (var key in todo) {
-                task[key] = todo[key];
-            }
-            status[todo.status].push(task);
-
-        })
-        return status;
-    }
-
+    /**
+    * Called by handleFilterByStatus to get the todos filtered by status. The current status value is taken from selectValue state
+    */
     filterTodos = () => {
         let filteredTodos;
         if (this.state.selectValue === "all") {
@@ -50,12 +38,18 @@ class Filter extends Component {
         })
     }
 
+    /**
+    * Handler for Filter todos by status on change event of select.
+    */
     handleFilterByStatus = (e) => {
         this.setState({
             selectValue: e.target.value
         }, () => this.filterTodos())
     }
 
+    /**
+    * Handler clear complete button on click event.
+    */
     handleClearComplete = (projectId) => {
         let completeTodos = [];
         this.props.todos.forEach((todo, i) => {
@@ -66,12 +60,18 @@ class Filter extends Component {
         this.props.removeTodos(completeTodos);
     }
 
+    /**
+    * Handler for todos filter for default display format and display by project.
+    */
     handleTodosFilter = (e) => {
         this.setState({
             todosFilter: e.target.value
         }, () => this.toggleDisplay());
     }
 
+    /**
+    * sets state to hide or show components as per user input.
+    */
     toggleDisplay = () => {
         this.setState({
             projectListIsHidden: this.state.projectListIsHidden ? false : true,
@@ -81,9 +81,12 @@ class Filter extends Component {
     }
 
     render() {
+        //assign status options for filter.
         let selectJSX = this.props.status.map((state, i) => {
             return <option value={state.id}>{state.title}</option>
         })
+
+        // css for disable and enable clear complete button
         let clearBtnCss = {};
 
         if(!this.props.competeTasksCounter) {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import './AddTodo.css';
 
+/**
+*  To add a new Todo.
+*/
 class AddTodo extends Component {
     constructor() {
         super();
@@ -10,6 +12,9 @@ class AddTodo extends Component {
         }
     }
 
+    /**
+    * Sets the state to toggle display between add new button and add new todo form.
+    */
     toggleDisplay = () => {
          this.setState({
             addNewFormDisplay: this.state.addNewFormDisplay === "block" ? "none" : "block",
@@ -17,22 +22,28 @@ class AddTodo extends Component {
          })     
     }
 
+    /**
+    * Handler to submit form data after adding a new todo.
+    */
     handleFormSubmit(e) {
         e.preventDefault();
         this.toggleDisplay();
-    
         this.props.addNewTask(this.form)
     }
 
     render() {
+
+        //sets the options for projects dropdown in add new todo form.
         let projectsJSX = this.props.projects.map((project, i) =>{
                 return <option value={project.id}>{project.title}</option>
         })
 
+        //sets the options for status dropdown in add new todo form.
         let statusJSX = this.props.status.map((item, i) =>{
             return <option value={item.id}>{item.title}</option>
         })
 
+        // sets checkboxes JSX for all existing labels for add new todo form.
         let editLabelsJSX = this.props.labels.map((label, i) => {
             return   <label htmlFor="labels">
                         <input type="checkbox" name="labels" id={label.id}/>
@@ -41,6 +52,7 @@ class AddTodo extends Component {
         })
 
         return (
+            // add new task form
             <div className="add-new-task">
                 <section style={{ display: this.state.addNewFormDisplay }}>
                 <div className="row">
@@ -79,6 +91,7 @@ class AddTodo extends Component {
                 <div className="row">
                     <div className="col-sm-12">
                         <div className="add-new-btn">
+                            {/* on click of this button, add new form is displayed */}
                             <button style={{ display: this.state.addNewButtonDisplay }} onClick={this.toggleDisplay}>Add New</button>
                         </div>
                     </div>

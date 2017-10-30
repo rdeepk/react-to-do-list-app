@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
 import TodoListByProject from '../TodoListByProject';
 
+/**
+* Project component for displaying todos by project.
+*/
 class Project extends Component {
 
+    /**
+    * Takes the project id as param, then collects all its todos with complete status and send them for deletion.
+    * its called on click event of clear complete link.
+    */
     clearComplete = (projectId) => {
         let completeTodos = [];
         this.props.todos.forEach((todo, i) => {
@@ -14,6 +21,7 @@ class Project extends Component {
     }
 
     render() {
+        //calculates the count of todos with complete status.
         let completeTasksCount = 0;
         this.props.todos.forEach((todo, i) => {
           if(Number(todo.status) === 101) {
@@ -21,6 +29,7 @@ class Project extends Component {
           }
         })
 
+        //Disable or enable css for clear complete button based on count of todos with complete status.
         let clearBtnCss;
         if(!completeTasksCount) {
             clearBtnCss = {
@@ -35,6 +44,7 @@ class Project extends Component {
                 "color": "#fff"
             }
         }
+        
         return (
             <div className="project">
                 <div className="row">
