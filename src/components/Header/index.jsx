@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import TodoFilter from '../TodoFilter';
 import AddTodo from '../AddTodo';
+import AddProject from '../AddProject';
+import AddLabel from '../AddLabel';
 
 class Header extends React.Component {
     constructor(props) {
@@ -118,6 +120,8 @@ class Header extends React.Component {
                         </select>
                         <Link to="/addnew">Add New</Link>
                         <button style={clearBtnCss} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button>
+                        <Link to="/addnewproject">Add New Project</Link>
+                        <Link to="/addnewlabel">Add New Label</Link>
                         {/* <!-- /.navbar-collapse --> */}
                     </div>
                     {/* <!-- /.container-fluid --> */}
@@ -138,6 +142,18 @@ class Header extends React.Component {
                                                                         competeTasksCounter={this.props.competeTasksCounter}
                                                                         todoListIsHidden={this.state.todoListIsHidden}
                                                                         projectListIsHidden={this.state.projectListIsHidden}
+                                                                    />
+                )} />
+                <Route path="/addnewproject" exact render={(props) => (<AddProject    projects={this.props.projects}
+                                                                            status={this.props.status}
+                                                                            labels={this.props.labels}
+                                                                            addNewProject={this.props.addNewProject}
+                                                                    />
+                )} />
+                <Route path="/addnewlabel" exact render={(props) => (<AddLabel    projects={this.props.projects}
+                                                                            status={this.props.status}
+                                                                            labels={this.props.labels}
+                                                                            addNewLabel={this.props.addNewLabel}
                                                                     />
                 )} />
             </div>

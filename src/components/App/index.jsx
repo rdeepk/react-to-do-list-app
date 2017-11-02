@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Route, Switch} from 'react-router-dom';
 import Header from '../Header';
 import AddTodo from '../AddTodo';
 
@@ -81,6 +80,22 @@ class App extends Component {
     this.state.todos.push(newTodo)
     this.setState(this.state.todos)
     this.setCompleteTasksCounter();
+  }
+
+  addNewLabel = () => {
+
+  }
+
+  /**
+  * Adds new projects.
+  */
+  addNewProject = (project) => {
+    let newProject = {
+      id: this.getNextId(this.state.projects),
+      title: project.title.value
+    }
+    this.state.projects.push(newProject);
+    this.setState(this.state.projects);
   }
 
   /**
@@ -173,6 +188,8 @@ class App extends Component {
                 labels={this.state.labels}
                 competeTasksCounter={this.state.competeTasksCounter}
                 addNewTask={this.addNewTask}
+                addNewLabel={this.addNewLabel}
+                addNewProject={this.addNewProject}
                 /> 
       </div>
     );

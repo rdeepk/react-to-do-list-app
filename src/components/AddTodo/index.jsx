@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 /**
@@ -35,10 +35,6 @@ class AddTodo extends Component {
         this.props.addNewTask(this.form)
         this.toggleDisplay();
         this.form.reset();
-    }
-
-    displaySuccess = () => {
-       // return "New Todo is added. Please {<Link to="/">click here</Link>} to view."
     }
 
     render() {
