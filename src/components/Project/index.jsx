@@ -62,6 +62,7 @@ class Project extends Component {
                                     labels={this.props.labels}
                                     updateTask={this.props.updateTask}
                                     project={this.props.id}
+                                    deleteById={this.props.deleteById}
                                     />
             </div>
         )

@@ -6,6 +6,7 @@ import Todo from '../Todo';
 */
 class TodoList extends Component {
     render() {
+        console.log(this.props.todos);
 
         let todosJSX = this.props.todos.map((todo, index)=>{
             return <Todo    key={index}
@@ -14,6 +15,7 @@ class TodoList extends Component {
                             status={this.props.status}
                             updateTask={this.props.updateTask}
                             competeTasksCounter={this.props.competeTasksCounter}
+                            deleteById={this.props.deleteById}
                             />
         })
         return (

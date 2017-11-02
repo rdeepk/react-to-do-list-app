@@ -36,6 +36,7 @@ class ProjectList extends Component {
                             getTitleById = {this.props.getTitleById}
                             updateTask={this.props.updateTask}
                             removeTodos={this.props.removeTodos}
+                            deleteById={this.props.deleteById}
                             />
         })
         return (

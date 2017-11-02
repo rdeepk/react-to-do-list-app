@@ -13,6 +13,7 @@ class TodoListByProject extends Component {
                                     labels={this.props.labels}
                                     updateTask={this.props.updateTask}
                                     project={this.props.project}
+                                    deleteById={this.props.deleteById}
                                     />
         })
         return (

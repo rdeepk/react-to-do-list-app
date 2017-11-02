@@ -125,6 +125,15 @@ class App extends Component {
     this.setCompleteTasksCounter();
   }
 
+  deleteById = (id, name) => {
+     let newArray = this.state[name].filter((array,i) => {
+        return array.id !== id
+    })
+    this.setState({
+      todos: newArray
+    });
+  }
+
   /**
   * Takes id and name of the object and returns corresponding title.
   */
@@ -198,6 +207,7 @@ class App extends Component {
                 addNewTask={this.addNewTask}
                 addNewLabel={this.addNewLabel}
                 addNewProject={this.addNewProject}
+                deleteById={this.deleteById}
                 /> 
       </div>
     );

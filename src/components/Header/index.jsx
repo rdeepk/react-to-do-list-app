@@ -142,6 +142,7 @@ class Header extends React.Component {
                                                                         competeTasksCounter={this.props.competeTasksCounter}
                                                                         todoListIsHidden={this.state.todoListIsHidden}
                                                                         projectListIsHidden={this.state.projectListIsHidden}
+                                                                        deleteById={this.props.deleteById}
                                                                     />
                 )} />
                 <Route path="/addnewproject" exact render={(props) => (<AddProject    projects={this.props.projects}

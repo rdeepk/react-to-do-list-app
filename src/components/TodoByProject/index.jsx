@@ -29,6 +29,10 @@ class TodoByProject extends Component {
         console.log("todobyproject");
         this.props.updateTask(this.form, this.props.todo.id)
     }
+
+    deleteTodo(id) {
+        this.props.deleteById(id, 'todos');
+    }
    
 
     render() {
@@ -100,6 +104,7 @@ class TodoByProject extends Component {
                         <div className="col-xs-3 col-md-2 check">
                             <div>{getIcon()}</div>
                             <div><button className="edit-link" onClick={this.toggleDisplay}><i className="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i></button></div>
+                            <div><button className="delete-link" onClick={() => {this.deleteTodo(this.props.todo.id)}}><i className="fa fa-trash-o" aria-hidden="true" title="Delete Todo"></i></button></div>
                         </div>
                         <div className="col-xs-9 col-md-10 display">
                             <div className="title"><strong>Task:</strong> {this.props.todo.title}</div>

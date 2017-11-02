@@ -18,6 +18,7 @@ class TodoFilter extends Component {
                                 removeTodos={this.props.removeTodos}
                                 status={this.props.status}
                                 updateTask={this.props.updateTask}
+                                deleteById={this.props.deleteById}
                             />}
                         {!this.props.projectListIsHidden &&
                             <ProjectList projects={this.props.projects}
@@ -27,6 +28,7 @@ class TodoFilter extends Component {
                                 labels={this.props.labels}
                                 updateTask={this.props.updateTask}
                                 removeTodos={this.props.removeTodos}
+                                deleteById={this.props.deleteById}
                             />}
                     </div>
                 </div>
