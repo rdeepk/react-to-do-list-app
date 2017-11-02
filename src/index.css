@@ -9,7 +9,7 @@ label {
 }
 
 button,
-input[type=submit] {
+input[type=submit], a {
     padding: 10px 25px;
     background: #111;
     color: #fff;

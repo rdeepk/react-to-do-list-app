@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect, Link } from 'react-router-dom';
+
 
 /**
 *  To add a new Todo.
@@ -7,8 +9,9 @@ class AddTodo extends Component {
     constructor() {
         super();
         this.state = {
-            addNewFormDisplay: "none",
-            addNewButtonDisplay: "inline-block"
+            addNewFormDisplay: "block",
+            addNewButtonDisplay: "inline-block",
+            displaySuccessMessage: "none"
         }
     }
 
@@ -18,7 +21,8 @@ class AddTodo extends Component {
     toggleDisplay = () => {
          this.setState({
             addNewFormDisplay: this.state.addNewFormDisplay === "block" ? "none" : "block",
-            addNewButtonDisplay: this.state.addNewButtonDisplay === "inline-block" ? "none" : "inline-block"
+            addNewButtonDisplay: this.state.addNewButtonDisplay === "inline-block" ? "none" : "inline-block",
+            displaySuccessMessage: this.state.displaySuccessMessage === "block" ? "none" : "block",
          })     
     }
 
@@ -29,10 +33,15 @@ class AddTodo extends Component {
         e.preventDefault();
         this.toggleDisplay();
         this.props.addNewTask(this.form)
+        this.toggleDisplay();
+        this.form.reset();
+    }
+
+    displaySuccess = () => {
+       // return "New Todo is added. Please {<Link to="/">click here</Link>} to view."
     }
 
     render() {
-
         //sets the options for projects dropdown in add new todo form.
         let projectsJSX = this.props.projects.map((project, i) =>{
                 return <option value={project.id} key={i}>{project.title}</option>
@@ -54,7 +63,7 @@ class AddTodo extends Component {
         return (
             // add new task form
             <div className="add-new-task">
-                <section style={{ display: this.state.addNewFormDisplay }}>
+                <section style={{display: this.state.addNewFormDisplay}}>
                 <div className="row">
                     <div className="col-sm-12">
                         <h3>Add New Task</h3>
@@ -81,24 +90,17 @@ class AddTodo extends Component {
                         </div>
                         <div className="form-group">
                             <input type="submit" value="Add" />
-                            <button type="button" onClick={this.toggleDisplay}>Cancel</button>
+                            {/* <button type="button" onClick={this.toggleDisplay}>Cancel</button> */}
                         </div>
                         </form>
                     </div>
                 </div>                        
             </section>
-            <div>
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div className="add-new-btn">
-                            {/* on click of this button, add new form is displayed */}
-                            <button style={{ display: this.state.addNewButtonDisplay }} onClick={this.toggleDisplay}>Add New</button>
-                        </div>
-                    </div>
-                </div>
+            <div className="success" style={{display: this.state.displaySuccessMessage}}>
+                <p>New Todo is added. Please{<Link to="/"> click here </Link>} to view todos.</p>
+                <div><Link to="/addnew" onClick={this.toggleDisplay}>Add Another Todo</Link></div>
             </div>
-        </div>
-            
+        </div> 
         )
     }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
@@ -131,10 +132,13 @@ const labels = [
     }
 
 ];
-ReactDOM.render(<App    todos={todos}
+ReactDOM.render(
+                <Router>
+                <App    todos={todos}
                         status={status}
                         projects={projects}
                         labels={labels}
-                />, document.getElementById('tasks'));
+                />
+                </Router>, document.getElementById('tasks'));
 registerServiceWorker();
     

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Filter from '../Filter';
+import {Route, Switch} from 'react-router-dom';
+import Header from '../Header';
 import AddTodo from '../AddTodo';
 
 /**
@@ -86,7 +87,6 @@ class App extends Component {
   * Updates an existing todo.
   */
   updateTask = (task, id) => {
-    console.log("Updating:  " +task);
     this.state.todos.forEach((todo, i) => {
       if(todo.id === id) {
         this.state.todos[i].title = task.title.value;
@@ -163,12 +163,8 @@ class App extends Component {
               </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-sm-12">
-            <AddTodo projects={this.state.projects}  status={this.state.status}  labels={this.state.labels} addNewTask={this.addNewTask} />
-          </div>
-        </div>
-        <Filter getTitleById = {this.getTitleById}
+
+        <Header getTitleById = {this.getTitleById}
                 removeTodos={this.removeTodos}
                 status={this.state.status}
                 updateTask={this.updateTask}
@@ -176,7 +172,8 @@ class App extends Component {
                 projects={this.state.projects}
                 labels={this.state.labels}
                 competeTasksCounter={this.state.competeTasksCounter}
-                />
+                addNewTask={this.addNewTask}
+                /> 
       </div>
     );
   }
