@@ -82,8 +82,16 @@ class App extends Component {
     this.setCompleteTasksCounter();
   }
 
-  addNewLabel = () => {
-
+  /**
+  * Adds new labels.
+  */
+  addNewLabel = (label) => {
+    let newLabel = {
+      id: this.getNextId(this.state.labels),
+      title: label.title.value
+    }
+    this.state.labels.push(newLabel);
+    this.setState(this.state.labels);
   }
 
   /**
