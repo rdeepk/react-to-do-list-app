@@ -107,27 +107,31 @@ class Header extends React.Component {
         })
         return (
             <div>
-                <nav class="navbar navbar-default">
+                <nav class="site-nav">
                     <div class="container-fluid">
-                        <Link to="/">Todos</Link>
-                        <Link to="/addnew">Add New Todo</Link>
-                        <Link to="/projects">Projects</Link>
-                        <Link to="/labels">Labels</Link>
+                        <ul>
+                            <li><Link to="/">Todos</Link></li>
+                            <li><Link to="/addnew">Add New Todo</Link></li>
+                            <li><Link to="/projects">Projects</Link></li>
+                            <li><Link to="/labels">Labels</Link></li>
+                        </ul>
                         {/* <!-- /.navbar-collapse --> */}
                     </div>
                     {/* <!-- /.container-fluid --> */}
                 </nav>
-                <nav class="navbar navbar-default">
+                <nav class="nav-sub">
                     <div class="container-fluid">
-                        <select className="todos-filter" value={this.state.todosFilter} onChange={this.handleTodosFilter}>
+                        <ul>
+                        <li><select className="todos-filter" value={this.state.todosFilter} onChange={this.handleTodosFilter}>
                             <option value="default">Default</option>
                             <option value="filterByProject">Filter by project</option>
-                        </select>
-                        <select className="todos-by-status" value={this.state.selectValue} onChange={this.handleFilterByStatus}>
+                        </select></li>
+                        <li><select className="todos-by-status" value={this.state.selectValue} onChange={this.handleFilterByStatus}>
                             <option value="all">All</option>
                             {selectJSX}
-                        </select>
-                        <button style={clearBtnCss} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button>
+                        </select></li>
+                        <li><button style={clearBtnCss} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button></li>
+                        </ul>
                         {/* <!-- /.navbar-collapse --> */}
                     </div>
                     {/* <!-- /.container-fluid --> */}
