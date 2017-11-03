@@ -29,12 +29,15 @@ class AddLabel extends Component {
                 <section>
                     <div className="row">
                         <div className="col-sm-12">
-                            <h3>Add New Labels</h3>
+                            <h3>Add New Label</h3>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-10 col-md-offset-1">
-                            <label>Existing Labels: {labelsJSX}</label>
+                            <div className="list">
+                                <label>Existing Labels: </label>
+                                <label>{labelsJSX}</label>
+                            </div>
                         </div>
                     </div>
                     <div className="row">

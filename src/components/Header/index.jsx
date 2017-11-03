@@ -110,6 +110,8 @@ class Header extends React.Component {
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <Link to="/">Todos</Link>
+                        <Link to="/projects">Projects</Link>
+                        <Link to="/labels">Labels</Link>
                         <select className="todos-filter" value={this.state.todosFilter} onChange={this.handleTodosFilter}>
                             <option value="default">Default</option>
                             <option value="filterByProject">Filter by project</option>
@@ -120,8 +122,6 @@ class Header extends React.Component {
                         </select>
                         <Link to="/addnew">Add New</Link>
                         <button style={clearBtnCss} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button>
-                        <Link to="/addnewproject">Add New Project</Link>
-                        <Link to="/addnewlabel">Add New Label</Link>
                         {/* <!-- /.navbar-collapse --> */}
                     </div>
                     {/* <!-- /.container-fluid --> */}
@@ -145,13 +145,13 @@ class Header extends React.Component {
                                                                         deleteById={this.props.deleteById}
                                                                     />
                 )} />
-                <Route path="/addnewproject" exact render={(props) => (<AddProject    projects={this.props.projects}
+                <Route path="/projects" exact render={(props) => (<AddProject    projects={this.props.projects}
                                                                             status={this.props.status}
                                                                             labels={this.props.labels}
                                                                             addNewProject={this.props.addNewProject}
                                                                     />
                 )} />
-                <Route path="/addnewlabel" exact render={(props) => (<AddLabel    projects={this.props.projects}
+                <Route path="/labels" exact render={(props) => (<AddLabel    projects={this.props.projects}
                                                                             status={this.props.status}
                                                                             labels={this.props.labels}
                                                                             addNewLabel={this.props.addNewLabel}

@@ -86,12 +86,17 @@ class App extends Component {
   * Adds new labels.
   */
   addNewLabel = (label) => {
+    let labelId = this.getNextId(this.state.labels);
     let newLabel = {
-      id: this.getNextId(this.state.labels),
+      id: labelId,
       title: label.title.value
     }
+    this.state.todos.forEach((todo, i) => {
+      todo.labels.push({id: labelId, ischecked: false})
+    }) 
     this.state.labels.push(newLabel);
     this.setState(this.state.labels);
+    this.setState(this.state.todos);
   }
 
   /**

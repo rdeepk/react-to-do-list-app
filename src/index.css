@@ -204,3 +204,17 @@ h3 {
 .stats span {
     margin: 0 20px;
 }
+
+.list {
+    margin: 50px 0;
+}
+
+.list span{
+    display: inline-block;
+    font-style: italic;
+    background-color: #eee;
+    font-size: 0.9em;
+    padding: 2px 10px 0;
+    border-radius: 3px;
+    margin: 5px 2px;
+}

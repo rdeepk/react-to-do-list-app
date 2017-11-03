@@ -33,7 +33,10 @@ class AddProject extends Component {
                     </div>
                     <div className="row">
                         <div className="col-md-10 col-md-offset-1">
-                            <label>Existing Projects: {projectsJSX}</label>
+                            <div className="list">
+                                <label>Existing Projects:</label>
+                                <label>{projectsJSX}</label>
+                            </div>
                         </div>
                     </div>
                     <div className="row">
