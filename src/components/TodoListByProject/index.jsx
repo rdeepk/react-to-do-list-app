@@ -14,6 +14,7 @@ class TodoListByProject extends Component {
                                     updateTask={this.props.updateTask}
                                     project={this.props.project}
                                     deleteById={this.props.deleteById}
+                                    handleMenuClasses={this.props.handleMenuClasses}
                                     />
         })
         return (

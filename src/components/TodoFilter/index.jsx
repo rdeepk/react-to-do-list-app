@@ -20,6 +20,7 @@ class TodoFilter extends Component {
                                 updateTask={this.props.updateTask}
                                 deleteById={this.props.deleteById}
                                 competeTasksCounter={this.props.competeTasksCounter}
+                                handleMenuClasses={this.props.handleMenuClasses}
                             />}
                         {!this.props.projectListIsHidden &&
                             <ProjectList projects={this.props.projects}
@@ -31,6 +32,7 @@ class TodoFilter extends Component {
                                 removeTodos={this.props.removeTodos}
                                 deleteById={this.props.deleteById}
                                 competeTasksCounter={this.props.competeTasksCounter}
+                                handleMenuClasses={this.props.handleMenuClasses}
                             />}
                     </div>
                 </div>

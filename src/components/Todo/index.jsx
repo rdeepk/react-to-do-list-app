@@ -32,6 +32,10 @@ class Todo extends Component {
     deleteTodo(id) {
         this.props.deleteById(id, 'todos');
     }
+
+    componentDidMount() {
+        this.props.handleMenuClasses("todos")
+    }
     
     render() {
         //returns the array of checked labels for a todo
@@ -92,7 +96,7 @@ class Todo extends Component {
             }
             return icon;
         }
-        
+
         return (
             <div className={"item " + statusClass}>
                 {/* display of todos and visible by default */}

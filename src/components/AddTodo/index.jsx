@@ -24,6 +24,19 @@ class AddTodo extends Component {
          })     
     }
 
+    // componentDidMount() {
+    //     this.props.handleMenuClasses({
+    //         addNew : "active",
+    //         todos: "",
+    //         projects: "",
+    //         labels: ""
+    //     })
+    // }
+
+    componentDidMount() {
+        this.props.handleMenuClasses("addNew")
+    }
+
     /**
     * Handler to submit form data after adding a new todo.
     */

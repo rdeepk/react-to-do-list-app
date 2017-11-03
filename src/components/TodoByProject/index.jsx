@@ -34,6 +34,9 @@ class TodoByProject extends Component {
         this.props.deleteById(id, 'todos');
     }
    
+    componentDidMount() {
+        this.props.handleMenuClasses("todos")
+    }
 
     render() {
         //Makes jsx for the edit mode of labels for todos

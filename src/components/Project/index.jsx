@@ -63,6 +63,7 @@ class Project extends Component {
                                     updateTask={this.props.updateTask}
                                     project={this.props.id}
                                     deleteById={this.props.deleteById}
+                                    handleMenuClasses={this.props.handleMenuClasses}
                                     />
             </div>
         )

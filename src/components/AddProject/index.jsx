@@ -14,6 +14,10 @@ class AddProject extends Component {
         this.form.reset();
     }
 
+    componentDidMount() {
+        this.props.handleMenuClasses("projects")
+    }
+
     render() {
         //makes JSX for the list of existing projects.
         let projectsJSX = this.props.projects.map((project, i) => {

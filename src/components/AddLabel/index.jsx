@@ -14,6 +14,10 @@ class AddLabel extends Component {
         this.form.reset();
     }
 
+    componentDidMount() {
+        this.props.handleMenuClasses("labels")
+    }
+
     render() {
 
         // sets checkboxes JSX for all existing labels for add new todo form.

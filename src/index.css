@@ -80,6 +80,18 @@ h3 {
     border-radius: 6px;
 }
 
+.site-nav li.active a {
+    background: #ccc;
+    color: #000;
+}
+
+.site-nav li a:hover,
+.site-nav li a:active,
+.site-nav li a:focus {
+    background: #ccc;
+    color: #000;
+}
+
 .nav-sub {
     margin: 30px 15px;
 }

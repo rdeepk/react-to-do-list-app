@@ -15,7 +15,11 @@ class Header extends React.Component {
             todosFilter: "default",
             todoListIsHidden: false,
             projectListIsHidden: true,
-            displayClearForDefaultTodos: "inline-block"
+            displayClearForDefaultTodos: "inline-block",
+            todosMenuClass: "active",
+            addNewMenuClass: "",
+            labelsMenuClass: "",
+            projectsMenuClass: ""
         }
     }
 
@@ -78,6 +82,56 @@ class Header extends React.Component {
         this.props.removeTodos(completeTodos);
     }
 
+    handleMenuClasses = (key) => {
+        switch(key) {
+            case "todos":
+                this.setState({
+                    todosMenuClass : "active",
+                    addNewMenuClass: "",
+                    labelsMenuClass:"",
+                    projectsMenuClass:""
+                })
+            break;
+            case "addNew":
+                this.setState({
+                    todosMenuClass :"",
+                    addNewMenuClass: "active",
+                    labelsMenuClass:"",
+                    projectsMenuClass:""
+                })
+            break;
+            case "projects":
+            console.log("in projects");
+                this.setState({
+                    todosMenuClass :"",
+                    addNewMenuClass: "",
+                    labelsMenuClass:"",
+                    projectsMenuClass:"active"
+                })
+            break;
+            case "labels":
+                this.setState({
+                    todosMenuClass :"",
+                    addNewMenuClass: "",
+                    labelsMenuClass:"active",
+                    projectsMenuClass:""
+                })
+                break;
+        }
+    }
+
+    // handleMenuClasses = (classesObj) => {
+    //     for(let key in classesObj) {
+    //         let stateKey = key + 'MenuClass';
+    //         this.state[stateKey] = classesObj[key];
+    //         console.log(classesObj);
+    //         console.log(this.state[stateKey]);
+    //         this.setState(this.state[stateKey]);
+    //     }
+    // }
+
+
+
     render() {
         // css for disable and enable clear complete button
         let clearBtnCss = {};
@@ -108,10 +162,10 @@ class Header extends React.Component {
                 <nav className="site-nav">
                     <div className="container-fluid">
                         <ul>
-                            <li><Link to="/">Todos</Link></li>
-                            <li><Link to="/addnew">Add New Todo</Link></li>
-                            <li><Link to="/projects">Projects</Link></li>
-                            <li><Link to="/labels">Labels</Link></li>
+                            <li className={this.state.todosMenuClass}><Link to="/">Todos</Link></li>
+                            <li className={this.state.addNewMenuClass}><Link to="/addnew">Add New Todo</Link></li>
+                            <li className={this.state.projectsMenuClass}><Link to="/projects">Projects</Link></li>
+                            <li className={this.state.labelsMenuClass}><Link to="/labels">Labels</Link></li>
                         </ul>
                         {/* <!-- /.navbar-collapse --> */}
                     </div>
@@ -138,6 +192,7 @@ class Header extends React.Component {
                                                                             status={this.props.status}
                                                                             labels={this.props.labels}
                                                                             addNewTask={this.props.addNewTask}
+                                                                            handleMenuClasses={this.handleMenuClasses}
                                                                     />
                 )} />
                 <Route path="/" exact render={(props) => (<TodoFilter   getTitleById={this.props.getTitleById}
@@ -151,18 +206,21 @@ class Header extends React.Component {
                                                                         todoListIsHidden={this.state.todoListIsHidden}
                                                                         projectListIsHidden={this.state.projectListIsHidden}
                                                                         deleteById={this.props.deleteById}
+                                                                        handleMenuClasses={this.handleMenuClasses}
                                                                     />
                 )} />
                 <Route path="/projects" exact render={(props) => (<AddProject    projects={this.props.projects}
                                                                             status={this.props.status}
                                                                             labels={this.props.labels}
                                                                             addNewProject={this.props.addNewProject}
+                                                                            handleMenuClasses={this.handleMenuClasses}
                                                                     />
                 )} />
                 <Route path="/labels" exact render={(props) => (<AddLabel    projects={this.props.projects}
                                                                             status={this.props.status}
                                                                             labels={this.props.labels}
                                                                             addNewLabel={this.props.addNewLabel}
+                                                                            handleMenuClasses={this.handleMenuClasses}
                                                                     />
                 )} />
             </div>
