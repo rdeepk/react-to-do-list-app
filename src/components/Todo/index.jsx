@@ -11,7 +11,7 @@ class Todo extends Component {
             editTodoDisplay: "none"
         }
     }
-
+    
     /**
     * Sets the state to toggle display between todos in display or edit mode.
     */

@@ -9,7 +9,6 @@ class AddTodo extends Component {
     constructor() {
         super();
         this.state = {
-            addNewFormDisplay: "block",
             addNewButtonDisplay: "inline-block",
             displaySuccessMessage: "none"
         }
@@ -20,7 +19,6 @@ class AddTodo extends Component {
     */
     toggleDisplay = () => {
          this.setState({
-            addNewFormDisplay: this.state.addNewFormDisplay === "block" ? "none" : "block",
             addNewButtonDisplay: this.state.addNewButtonDisplay === "inline-block" ? "none" : "inline-block",
             displaySuccessMessage: this.state.displaySuccessMessage === "block" ? "none" : "block",
          })     
@@ -31,7 +29,6 @@ class AddTodo extends Component {
     */
     handleFormSubmit(e) {
         e.preventDefault();
-        this.toggleDisplay();
         this.props.addNewTask(this.form)
         this.toggleDisplay();
         this.form.reset();
@@ -59,7 +56,7 @@ class AddTodo extends Component {
         return (
             // add new task form
             <div className="add-new-task">
-                <section style={{display: this.state.addNewFormDisplay}}>
+                <section>
                 <div className="row">
                     <div className="col-sm-12">
                         <h3>Add New Task</h3>
@@ -86,15 +83,17 @@ class AddTodo extends Component {
                         </div>
                         <div className="form-group">
                             <input type="submit" value="Add" />
-                            {/* <button type="button" onClick={this.toggleDisplay}>Cancel</button> */}
                         </div>
                         </form>
                     </div>
                 </div>                        
             </section>
             <div className="success" style={{display: this.state.displaySuccessMessage}}>
-                <p>New Todo is added. Please{<Link to="/"> click here </Link>} to view todos.</p>
-                <div><Link to="/addnew" onClick={this.toggleDisplay}>Add Another Todo</Link></div>
+                <div className="row">
+                    <div className="col-md-10 col-md-offset-1">
+                        <p>New Todo is added. Please {<Link to="/">click here</Link>} to view todos.</p>
+                    </div>
+                </div>
             </div>
         </div> 
         )

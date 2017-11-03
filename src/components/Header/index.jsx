@@ -110,8 +110,15 @@ class Header extends React.Component {
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                         <Link to="/">Todos</Link>
+                        <Link to="/addnew">Add New Todo</Link>
                         <Link to="/projects">Projects</Link>
                         <Link to="/labels">Labels</Link>
+                        {/* <!-- /.navbar-collapse --> */}
+                    </div>
+                    {/* <!-- /.container-fluid --> */}
+                </nav>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
                         <select className="todos-filter" value={this.state.todosFilter} onChange={this.handleTodosFilter}>
                             <option value="default">Default</option>
                             <option value="filterByProject">Filter by project</option>
@@ -120,7 +127,6 @@ class Header extends React.Component {
                             <option value="all">All</option>
                             {selectJSX}
                         </select>
-                        <Link to="/addnew">Add New</Link>
                         <button style={clearBtnCss} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button>
                         {/* <!-- /.navbar-collapse --> */}
                     </div>
@@ -136,7 +142,7 @@ class Header extends React.Component {
                                                                         removeTodos={this.props.removeTodos}
                                                                         status={this.props.status}
                                                                         updateTask={this.props.updateTask}
-                                                                        todos={this.props.todos}
+                                                                        todos={this.state.filteredTodos}
                                                                         projects={this.props.projects}
                                                                         labels={this.props.labels}
                                                                         competeTasksCounter={this.props.competeTasksCounter}

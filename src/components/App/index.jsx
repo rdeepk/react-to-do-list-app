@@ -131,12 +131,11 @@ class App extends Component {
   }
 
   deleteById = (id, name) => {
-     let newArray = this.state[name].filter((array,i) => {
-        return array.id !== id
-    })
-    this.setState({
-      todos: newArray
-    });
+    if(name === 'todos') {
+      let ids = [];
+      ids.push(id);
+      this.removeTodos(ids);
+    }
   }
 
   /**
