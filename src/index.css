@@ -115,6 +115,10 @@ h3 {
     .nav-sub select {
         margin-bottom: 20px;
     }
+
+    .add-new-task select {
+        margin-bottom: 20px;
+    }
 }
 
 .todos-default {

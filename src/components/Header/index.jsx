@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import TodoFilter from '../TodoFilter';
 import AddTodo from '../AddTodo';
@@ -48,9 +48,7 @@ class Header extends React.Component {
             filteredTodos = this.props.todos;
         } else {
             filteredTodos = this.props.todos.filter((todo, item) => {
-                if (Number(todo.status) === Number(this.state.selectValue)) {
-                    return true;
-                }
+                return (Number(todo.status) === Number(this.state.selectValue))? true:false
             })
         }
         this.setState({
@@ -107,8 +105,8 @@ class Header extends React.Component {
         })
         return (
             <div>
-                <nav class="site-nav">
-                    <div class="container-fluid">
+                <nav className="site-nav">
+                    <div className="container-fluid">
                         <ul>
                             <li><Link to="/">Todos</Link></li>
                             <li><Link to="/addnew">Add New Todo</Link></li>
@@ -119,8 +117,8 @@ class Header extends React.Component {
                     </div>
                     {/* <!-- /.container-fluid --> */}
                 </nav>
-                <nav class="nav-sub">
-                    <div class="container-fluid">
+                <nav className="nav-sub">
+                    <div className="container-fluid">
                         <ul>
                         <li><select className="todos-filter" value={this.state.todosFilter} onChange={this.handleTodosFilter}>
                             <option value="default">Default</option>

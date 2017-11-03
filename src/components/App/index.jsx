@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../Header';
-import AddTodo from '../AddTodo';
 
 /**
  * Top level Parent component.

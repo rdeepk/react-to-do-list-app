@@ -11,9 +11,7 @@ class ProjectList extends Component {
     */
     getTodosByProject = (id) => {
         let todosJSX = this.props.todos.filter((todo, j) => {
-            if(todo.project === id) {
-                return true;
-            }
+            return todo.project === id ? true: false
         })
         return todosJSX;
     }
