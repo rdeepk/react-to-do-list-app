@@ -17,6 +17,9 @@ This is built using React. Basic functionality is:
 - Filter tasks by Project.
 - Functionality to add new todos.
 - Ability to edit existing todos.
+- Delete existing todos.
 - One click clear for all completed tasks.
 - Displays the total, active and completed tasks statistics.
 - Filter the tasks by status.
+- Display and add new projects.
+- Display and add labels.
