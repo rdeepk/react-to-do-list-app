@@ -151,7 +151,7 @@ class Header extends React.Component {
                 display: this.state.displayClearForDefaultTodos
             }
         }
-
+        console.log(clearBtnCss);
 
         //assign status options for filter.
         let selectJSX = this.props.status.map((state, i) => {
@@ -178,11 +178,11 @@ class Header extends React.Component {
                             <option value="default">Default</option>
                             <option value="filterByProject">Filter by project</option>
                         </select></li>
-                        <li><select className="todos-by-status" value={this.state.selectValue} onChange={this.handleFilterByStatus}>
+                        <li><select className="todos-by-status" value={this.state.selectValue} onChange={this.handleFilterBhandleFilterByStatusyStatus}>
                             <option value="all">All</option>
                             {selectJSX}
                         </select></li>
-                        <li><button style={clearBtnCss} onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button></li>
+                        <li><button onClick={() => { this.handleClearComplete(this.props.id) }}>Clear Complete</button></li>
                         </ul>
                         {/* <!-- /.navbar-collapse --> */}
                     </div>
